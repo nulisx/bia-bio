@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="#2F3136" name="theme-color">
+    <title></title>
+    <link rel="stylesheet" href="public/css/global.css">
+    <link rel="stylesheet" href="public/css/users.css">
+    <link rel="stylesheet" href="public/css/popup.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&amp;f[]=array@400&amp;display=swap" rel="stylesheet">
+    <link rel="icon" href="/public/img/icon.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee&family=Creepster&family=Gloria+Hallelujah&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
+</head>
+
+<div id="background"></div>
+<div id="background-layer-1" class="background-layer"></div>
+<!-- <body profile=""
+    style="font-family: Satoshi, sans-serif; cursor: url('/cdn/files/cursor/853683708099821598.cur'), auto; background-color: #222222;">
+    <video class="background" autoplay muted loop>
+        <source src="/public/img/ezgif-78dd72f9a4ccad.mp4" type="video/mp4">
+        Votre navigateur ne prend pas en charge la balise vidéo.
+    </video> -->
+
+    <div class="container" id="container" style="will-change: transform; transition: 700ms cubic-bezier(0.03, 0.98, 0.52, 0.99); transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
+        <img class="avatar" src="https://i.pinimg.com/736x/19/31/5b/19315bf792f6cf8004d9b2ce174d6efb.jpg">
+
+        <div class="profileLayout">
+            <h1 class="profileUsername" style="color: #ffffff; text-shadow: 0 0 20px #ffffff;">Bia</h1>
+
+            <div class="profileBadges">
+                <div style="display: flex;" class="profileBadge dev">
+                    <svg class="profileBadge" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 24 24" width="1.3em">
+                        <path
+                            d="m21.58 11.4-4.28-7.39-.35-.6h-9.91l-.35.6-4.27 7.39-.35.6.35.6 4.27 7.39.35.6h9.92l.35-.6 4.28-7.39.35-.6zm-13.07-1.03-1.63 1.63 1.63 1.63v2.73l-4.36-4.36 4.37-4.37v2.74zm3.12 6.93-2.04-.63 3.1-9.98 2.04.64zm3.86-.93v-2.73l1.63-1.64-1.63-1.63v-2.74l4.36 4.37z"
+                            style="filter: drop-shadow(0 0 1.5px #ffffff) !important;" fill="#ffffff" />
+                    </svg>
+                </div>
+
+                <div class="profileBadge certif">
+                    <svg class="profileBadge" xmlns="http://www.w3.org/2000/svg"
+                        style="fill: #ffffff; filter: drop-shadow(0 0 1.5px #ffffff) !important;" width="1em"
+                        height="1em" viewBox="1 1.5 22 21">
+                        <path
+                            d="m8.6 22.5l-1.9-3.2l-3.6-.8l.35-3.7L1 12l2.45-2.8l-.35-3.7l3.6-.8l1.9-3.2L12 2.95l3.4-1.45l1.9 3.2l3.6.8l-.35 3.7L23 12l-2.45 2.8l.35 3.7l-3.6.8l-1.9 3.2l-3.4-1.45l-3.4 1.45Zm2.35-6.95L16.6 9.9l-1.4-1.45l-4.25 4.25l-2.15-2.1L7.4 12l3.55 3.55Z">
+                        </path>
+                    </svg>
+                </div>
+
+                <div style="display: flex;" class="profileBadge premium">
+                    <svg class="profileBadge" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="23 32 465 448" width="1.3em">
+                        <path
+                            d="M396.31 32H264l84.19 112.26L396.31 32zm-280.62 0l48.12 112.26L248 32H115.69zM256 74.67L192 160h128l-64-85.33zm166.95-23.61L376.26 160H488L422.95 51.06zm-333.9 0L23 160h112.74L89.05 51.06zM146.68 192H24l222.8 288h.53L146.68 192zm218.64 0L264.67 480h.53L488 192H365.32zm-35.93 0H182.61L256 400l73.39-208z"
+                            style="filter: drop-shadow(0 0 1.5px #ffffff) !important;" fill="#ffffff" />
+                    </svg>
+                </div>
+
+                <div class="profileBadge imagehost">
+                    <svg class="profileBadge" xmlns="http://www.w3.org/2000/svg"
+                        style="fill: #ffffff; filter: drop-shadow(0 0 1.5px #ffffff) !important;" width="1em"
+                        height="1em" viewBox="1 1.5 22 21">
+                        <path
+                        d="M9.153 5.408C10.42 3.136 11.053 2 12 2c.947 0 1.58 1.136 2.847 3.408l.328.588c.36.646.54.969.82 1.182c.28.213.63.292 1.33.45l.636.144c2.46.557 3.689.835 3.982 1.776c.292.94-.546 1.921-2.223 3.882l-.434.507c-.476.557-.715.836-.822 1.18c-.107.345-.071.717.001 1.46l.066.677c.253 2.617.38 3.925-.386 4.506c-.766.582-1.918.051-4.22-1.009l-.597-.274c-.654-.302-.981-.452-1.328-.452c-.347 0-.674.15-1.329.452l-.595.274c-2.303 1.06-3.455 1.59-4.22 1.01c-.767-.582-.64-1.89-.387-4.507l.066-.676c.072-.744.108-1.116 0-1.46c-.106-.345-.345-.624-.821-1.18l-.434-.508c-1.677-1.96-2.515-2.941-2.223-3.882c.293-.941 1.523-1.22 3.983-1.776l.636-.144c.699-.158 1.048-.237 1.329-.45c.28-.213.46-.536.82-1.182l.328-.588Z">
+                        </path>
+                    </svg>
+                </div>
+
+            </div>
+            <h3 id="typingText" style="color: #ffffff;" class="profileBio"></h3>
+            <i>
+                <div id="typingTexts" style="display: none;">"You are the candle burning unto nothing."</div>
+            </i>
+            <script src="/public/js/typing.js"></script>
+            <script src="/public/js/title.js"></script>
+        </div>
+
+        <div class="presenceWrapper">
+            <div class="presenceContainer">
+                <div class="discordInfos">
+                    <div class="discordAvatar">
+                        <img class="avatarImage" src="https://images-ext-1.discordapp.net/external/PbXocJqd5F4-YxHJp4T8yDViJkEKPAAG1dtmLBukS6E/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/874517110678765618/5ef2945934f5f07e0498009b7a62627a.png?format=webp&quality=lossless&width=164&height=164"
+                            alt="Discord Avatar">
+                        <img class="discordStatus" src="/public/img/online.png" alt="idle">
+                    </div>
+                    <div class="discordActivity">
+                        <div class="discordUser">
+                            <div class="discordUserDiv">
+                                <span>biaquista</span>
+                                <div class="discordUserBadges">
+                                    <div class="discordUserBadge" data-tooltip="Completou uma Missão">
+                                        <img src="/public/img/mission.png" alt="Discord Badge">
+                                    </div>
+                                    <!-- <div class="discordUserBadge" data-tooltip="Server boosting since Jun 13, 2021">
+                                        <img src="/public/img/boost.png" alt="Discord Badge">
+                                    </div> -->
+
+                                </div>
+                            </div>
+                            <h3>J'me la touche et j'me torche le cul</h3>
+                        </div>
+                        <div class="discordActivityImage"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="linkedAccounts">
+            <a data-type="Discord" class="linkedAccountsRedirect" id="trigger-popup" target="_blank"
+                href="https://discord.com/users/874517110678765618">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.8em" height="1.8em" viewBox="1.96 4.26 20.03 15.53">
+                    <path fill="currentColor"
+                        d="M14.82 4.26a10.14 10.14 0 0 0-.53 1.1a14.66 14.66 0 0 0-4.58 0a10.14 10.14 0 0 0-.53-1.1a16 16 0 0 0-4.13 1.3a17.33 17.33 0 0 0-3 11.59a16.6 16.6 0 0 0 5.07 2.59A12.89 12.89 0 0 0 8.23 18a9.65 9.65 0 0 1-1.71-.83a3.39 3.39 0 0 0 .42-.33a11.66 11.66 0 0 0 10.12 0q.21.18.42.33a10.84 10.84 0 0 1-1.71.84a12.41 12.41 0 0 0 1.08 1.78a16.44 16.44 0 0 0 5.06-2.59a17.22 17.22 0 0 0-3-11.59a16.09 16.09 0 0 0-4.09-1.35zM8.68 14.81a1.94 1.94 0 0 1-1.8-2a1.93 1.93 0 0 1 1.8-2a1.93 1.93 0 0 1 1.8 2a1.93 1.93 0 0 1-1.8 2zm6.64 0a1.94 1.94 0 0 1-1.8-2a1.93 1.93 0 0 1 1.8-2a1.92 1.92 0 0 1 1.8 2a1.92 1.92 0 0 1-1.8 2z">
+                    </path>
+                </svg>
+            </a>
+
+            <a data-type="Spotify" class="linkedAccountsRedirect" id="trigger-popup" target="_blank"
+                href="https://open.spotify.com/user/31qexlmqdmravj35b56gay7l42iu?si=c7a159e2638f4748">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.8em" height="1.8em" viewBox="2.02 2.02 19.98 19.98">
+                    <path fill="currentColor"
+                        d="M12.01 2.019c-5.495 0-9.991 4.496-9.991 9.991c0 5.494 4.496 9.99 9.991 9.99c5.494 0 9.99-4.496 9.99-9.99c0-5.495-4.446-9.991-9.99-9.991zm4.595 14.436c-.199.299-.549.4-.85.201c-2.349-1.45-5.296-1.75-8.793-.951c-.348.102-.648-.148-.748-.449c-.101-.35.149-.648.45-.749c3.795-.85 7.093-.499 9.69 1.1c.35.149.4.548.251.848zm1.2-2.747c-.251.349-.7.499-1.051.249c-2.697-1.646-6.792-2.148-9.939-1.148c-.398.101-.85-.1-.949-.498c-.101-.402.1-.852.499-.952c3.646-1.098 8.143-.548 11.239 1.351c.3.149.45.648.201.998zm.099-2.799c-3.197-1.897-8.542-2.097-11.59-1.146a.938.938 0 0 1-1.148-.6a.937.937 0 0 1 .599-1.151c3.547-1.049 9.392-.85 13.089 1.351c.449.249.599.849.349 1.298c-.25.35-.849.498-1.299.248z">
+                    </path>
+                </svg>
+            </a>
+
+            <a data-type="Github" class="linkedAccountsRedirect" id="trigger-popup" target="_blank" href="https://github.com/2x8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.8em" height="1.8em" viewBox="2.05 2 19.95 19.46">
+                    <path fill="currentColor"
+                        d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974c0 4.406 2.857 8.145 6.821 9.465c.499.09.679-.217.679-.481c0-.237-.008-.865-.011-1.696c-2.775.602-3.361-1.338-3.361-1.338c-.452-1.152-1.107-1.459-1.107-1.459c-.905-.619.069-.605.069-.605c1.002.07 1.527 1.028 1.527 1.028c.89 1.524 2.336 1.084 2.902.829c.091-.645.351-1.085.635-1.334c-2.214-.251-4.542-1.107-4.542-4.93c0-1.087.389-1.979 1.024-2.675c-.101-.253-.446-1.268.099-2.64c0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336a9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021c.545 1.372.203 2.387.099 2.64c.64.696 1.024 1.587 1.024 2.675c0 3.833-2.33 4.675-4.552 4.922c.355.308.675.916.675 1.846c0 1.334-.012 2.41-.012 2.737c0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974C22 6.465 17.535 2 12.026 2z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <div style="display: none;" id="curEffClr">#ffffff</div>
+    <script src="/public/js/cur-snow.js"></script>
+    <script src="/public/js/popup.js"></script>
+    <script>
+// Código do container com prioridade máxima
+const container = document.getElementById('container');
+
+// Configurações iniciais
+container.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+// Adicionando um z-index extremamente alto para sobrepor tudo
+container.style.zIndex = '9999';
+// Garantindo posição relativa ou absoluta para que o z-index funcione
+container.style.position = 'relative';
+
+// Efeito de movimento do mouse dentro do container
+container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const offsetX = (x - centerX) / centerX;
+    const offsetY = (y - centerY) / centerY;
+    const intensity = 8;
+
+    // Prevenindo propagação do evento para impedir que as sparkles sejam criadas dentro do container
+    e.stopPropagation();
+
+    container.style.transform = `
+        perspective(1000px)
+        rotateX(${offsetY * intensity}deg)
+        rotateY(${offsetX * intensity}deg)
+    `;
+});
+
+// Quando o mouse sai do container
+container.addEventListener('mouseleave', () => {
+    container.style.transition = 'transform 0.5s ease';
+    container.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    // Reset da transição após completar a animação de retorno
+    setTimeout(() => {
+        container.style.transition = '';
+    }, 500);
+});
+
+// Adicionando evento para prevenir a criação de sparkles dentro do container
+container.addEventListener('mouseenter', (e) => {
+    // Prevenindo propagação do evento
+    e.stopPropagation();
+});
+</script>
+</body>
+
+</html>
