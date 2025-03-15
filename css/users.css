@@ -409,6 +409,7 @@ body {
     gap: 1rem;
     margin-top: 2rem;
     filter: drop-shadow(0 0 1.2px #ffffff) !important;
+    cursor: crosshair;
 }
 
 .container .linkedAccounts .linkedAccountsRedirect {
@@ -416,6 +417,7 @@ body {
     display: flex;
     align-items: center;
     position: relative;
+    cursor: crosshair;
 }
 
 .container .linkedAccounts .linkedAccountsRedirect.copied::before {

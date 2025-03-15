@@ -4,6 +4,10 @@
 	box-sizing: border-box;
 }
 
+:root {
+	cursor: crosshair;
+  }
+
 body {
 	font-family: "Satoshi", sans-serif;
 	width: 100%;
@@ -12,6 +16,7 @@ body {
 	color: white;
 	overflow: hidden auto;
 	filter: contrast(0.7);
+	cursor: crosshair;
 }
 
 ::-moz-selection { /* Code for Firefox */
