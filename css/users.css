@@ -68,6 +68,11 @@ body {
     font-weight: 600;
     font-size: 36.5px;
     width: fit-content;
+    pointer-events: none;
+    background-image: url(http://i752.photobucket.com/albums/xx164/optiikzz/rc599e.gif);
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
 }
 
 .container .profileLayout .profileBadges {
