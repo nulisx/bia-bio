@@ -25,14 +25,16 @@ body {
     flex-direction: column;
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    min-height: 15rem;
+    min-height: 15rem; /* Altura inicial */
     padding: 35px 15px;
     width: 100%;
     max-width: 650px;
     text-align: center;
     border: 1px solid rgb(175, 175, 175);
-    will-change: transform;
+    will-change: transform, height; /* Adicionado height para otimização */
     margin: 0 auto; /* Centraliza o container na tela */
+    transition: height 0.5s ease, min-height 0.5s ease; /* Transição suave */
+    overflow: hidden; /* Evita que o conteúdo transborde durante a animação */
 }
 
 /* Ajustes para telas menores (tablets) */
