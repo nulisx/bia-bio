@@ -72,6 +72,7 @@ body {
     height: 115px;
     width: 115px;
     outline: 3px solid rgba(255, 255, 255, 0.301);
+    background-color: #ffffff;
     pointer-events: none;
 }
 
@@ -82,7 +83,6 @@ body {
     justify-content: center;
     max-width: 27rem;
     text-align: center;
-    pointer-events: none;
 }
 
 .container .profileLayout .profileUsername {
