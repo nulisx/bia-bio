@@ -16,7 +16,7 @@ body {
 	color: white;
 	overflow: hidden auto;
 	/* filter: contrast(1); */
-	/* cursor: crosshair; */
+    cursor: url(/img/cross_r.cur);
 }
 
 ::-moz-selection { /* Code for Firefox */
