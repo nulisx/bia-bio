@@ -15,7 +15,7 @@ body {
 	background-color: rgb(22, 22, 22);
 	color: white;
 	overflow: hidden auto;
-	filter: contrast(1);
+	/* filter: contrast(1); */
 	cursor: crosshair;
 }
 
@@ -108,7 +108,6 @@ body {
   /* Classe para aplicar a animação */
   .animate-fade-in {
 	opacity: 0;
-	animation: fadeInUp 0.6s ease forwards;
   }
   
 /* Classes de delay para aplicar individualmente */
@@ -138,4 +137,81 @@ body {
   .elemento-para-animar.animar {
 	opacity: 1;
 	transform: translateY(0);
+  }
+
+/* Estilos para a lockscreen */
+.lockscreen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(22, 22, 22, 0.514);
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: opacity 0.8s ease, visibility 0s linear 0.8s;
+	backdrop-filter: blur(10px);
+	cursor: pointer;
+  }
+  
+  .lock-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+  }
+  
+  .lock-avatar {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	border: 3px solid rgba(255, 255, 255, 0.3);
+	margin-bottom: 20px;
+	box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+	animation: pulse 2s infinite ease-in-out;
+  }
+  
+  .click-text {
+	color: white;
+	font-size: 18px;
+	font-weight: 500;
+	opacity: 0.8;
+	transition: all 0.3s ease;
+	text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+	animation: fadeInOut 1.5s infinite alternate;
+	margin-top: 15px;
+  }
+  
+  /* Animação para a lockscreen quando desbloqueada */
+  .lockscreen.unlock {
+	opacity: 0;
+	visibility: hidden;
+  }
+  
+  /* Animações */
+  @keyframes pulse {
+	0% {
+	  transform: scale(1);
+	  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+	}
+	70% {
+	  transform: scale(1.05);
+	  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+	}
+	100% {
+	  transform: scale(1);
+	  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+	}
+  }
+  
+  @keyframes fadeInOut {
+	0% {
+	  opacity: 0.4;
+	}
+	100% {
+	  opacity: 1;
+	}
   }

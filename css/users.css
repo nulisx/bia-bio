@@ -41,6 +41,7 @@ body {
         padding: 25px 10px; /* Reduz o padding */
         min-height: 12rem; /* Reduz a altura mínima */
         max-width: 90%; /* Aumenta a largura máxima para ocupar mais espaço */
+        height: auto;
     }
 }
 
