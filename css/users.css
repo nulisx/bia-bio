@@ -413,7 +413,7 @@ body {
     gap: 1rem;
     margin-top: 2rem;
     filter: drop-shadow(0 0 1.2px #ffffff) !important;
-    /* cursor: crosshair; */
+    cursor: url(/img/cross_r.cur);
 }
 
 .container .linkedAccounts .linkedAccountsRedirect {
@@ -421,7 +421,7 @@ body {
     display: flex;
     align-items: center;
     position: relative;
-    /* cursor: crosshair; */
+    cursor: url(/img/cross_r.cur);
 }
 
 .container .linkedAccounts .linkedAccountsRedirect.copied::before {
