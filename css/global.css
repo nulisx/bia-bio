@@ -16,7 +16,7 @@ body {
 	color: white;
 	overflow: hidden auto;
 	/* filter: contrast(1); */
-	cursor: crosshair;
+	/* cursor: crosshair; */
 }
 
 ::-moz-selection { /* Code for Firefox */
@@ -153,7 +153,7 @@ body {
 	align-items: center;
 	transition: opacity 0.8s ease, visibility 0s linear 0.8s;
 	backdrop-filter: blur(10px);
-	cursor: pointer;
+	/* cursor: pointer; */
   }
   
   .lock-content {
