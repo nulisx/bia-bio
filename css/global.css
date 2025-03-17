@@ -130,7 +130,7 @@ body {
 
 .elemento-para-animar {
 	opacity: 0;
-	transform: translateY(20px);
+	/* transform: translateY(20px); */
 	transition: opacity 0.5s ease, transform 0.5s ease;
   }
   

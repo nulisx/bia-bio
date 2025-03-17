@@ -456,7 +456,7 @@ body {
     color: white;
 }
 
-.container .profileViews {
+/* .container .profileViews {
     display: flex;
     align-items: center;
     gap: .25rem;
@@ -464,6 +464,78 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
+} */
+
+/* Removi o espaço depois de "profileViews" */
+.container .profileViews::before {
+    content: attr(data-type);
+    opacity: 0;
+    color: white;
+    position: absolute;
+    font-size: 15px;
+    font-weight: 600;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1rem;
+    padding: 2px 16px;
+    z-index: 1;
+    filter: none;
+    box-shadow: none;
+    white-space: nowrap;
+    transition: opacity .3s;
+}
+
+.container .profileViews:hover::before {
+    opacity: .8;
+    content: 'Views'; /* Adicionei o content aqui */
+}
+
+.profileStats {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+}
+
+/* .profileViews, .profileLocation {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    position: relative;
+} */
+
+.profileLocation::before {
+    content: attr(data-type);
+    opacity: 0;
+    color: white;
+    position: absolute;
+    font-size: 15px;
+    font-weight: 600;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1rem;
+    padding: 2px 16px;
+    z-index: 1;
+    filter: none;
+    box-shadow: none;
+    white-space: nowrap;
+    transition: opacity .3s;
+}
+
+.profileLocation:hover::before {
+    opacity: .8;
+}
+
+.separator {
+    height: 16px;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 @keyframes typing {
