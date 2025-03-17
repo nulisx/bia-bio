@@ -495,6 +495,8 @@ body {
     display: flex;
     align-items: center;
     position: absolute;
+    bottom: 12px;
+    left: 15px;
     gap: 0.5rem;
     background-color: rgba(255, 255, 255, 0);
     padding: 5px 10px;
@@ -502,12 +504,53 @@ body {
     color: white;
 }
 
-/* .profileViews, .profileLocation {
+/* Profile views and location styles */
+.profileViews, .profileLocation {
     display: flex;
     align-items: center;
     gap: 0.25rem;
     position: relative;
-} */
+}
+
+/* Responsive adjustments for tablets */
+@media (max-width: 768px) {
+    .profileStats {
+        bottom: 8px;
+        left: 10px;
+    }
+}
+
+/* Responsive adjustments for mobile phones */
+@media (max-width: 480px) {
+    .profileStats {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        bottom: 8px;
+        left: 8px;
+    }
+    
+    /* Hide the separator when stacked vertically */
+    .profileStats .separator {
+        display: none;
+    }
+    
+    /* Add some spacing between items */
+    .profileViews, .profileLocation {
+        padding: 2px 0;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+    .profileStats {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        margin-top: 15px;
+        align-items: center;
+    }
+}
 
 .profileLocation::before {
     content: attr(data-type);
