@@ -84,7 +84,7 @@ function criarLockscreen() {
         elemento.style.transform = 'translateY(0)';
         elemento.classList.add('animate-fade-in');
         elemento.style.animationDelay = `${index * 0.15}s`; // Delay crescente
-      }, 150 * index);
+      }, 200 * index);
     });
   }
   
