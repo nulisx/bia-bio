@@ -54,6 +54,7 @@ body {
         min-height: 10rem; /* Reduz a altura mínima */
         max-width: 95%; /* Aumenta a largura máxima para ocupar mais espaço */
         border-radius: 10px; /* Reduz o border-radius para telas pequenas */
+        padding-bottom: 100px;
     }
 }
 
@@ -87,6 +88,13 @@ body {
     justify-content: center;
     max-width: 27rem;
     text-align: center;
+}
+
+/* Ajustes para telas muito pequenas (smartphones) */
+@media (max-width: 480px) {
+    .container .profileLayout {
+        padding-top: 10px;
+    }
 }
 
 .container .profileLayout .profileUsername {
@@ -204,6 +212,13 @@ body {
     max-width: -moz-fit-content;
     max-width: fit-content;
     width: 100%;
+}
+
+/* Ajustes para telas muito pequenas (smartphones) */
+@media (max-width: 480px) {
+    .container .presenceContainer {
+        margin-top: 50px;
+    }
 }
 
 .container .presenceWrapper .discordInfos {
@@ -418,6 +433,13 @@ body {
     transition: all 0.3s ease; /* Adiciona uma transição suave */
 }
 
+/* Ajustes para telas muito pequenas (smartphones) */
+@media (max-width: 480px) {
+    .container .linkedAccounts {
+        padding-top: 10px;
+    }
+}
+
 /* .container .linkedAccounts svg {
     width: 2.1em;
     height: 2.1em;
@@ -557,7 +579,15 @@ body {
 @media (max-width: 992px) {
     .profileStats {
         bottom: -31px; /* Posição consistente na parte inferior */
-        right: 240px; /* Alinhado à direita em vez de usar valor fixo */
+        right: 230px; /* Alinhado à direita em vez de usar valor fixo */
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 900px) {
+    .profileStats {
+        bottom: -31px; /* Posição consistente na parte inferior */
+        right: 230px; /* Alinhado à direita em vez de usar valor fixo */
         padding: 5px 10px;
     }
 }
@@ -566,7 +596,7 @@ body {
 @media (max-width: 768px) {
     .profileStats {
         bottom: -25px; /* Posição consistente na parte inferior */
-        right: 230px; /* Alinhado à direita em vez de usar valor fixo */
+        right: 230px; /*Alinhado à direita em vez de usar valor fixo*/
     }
 }
 
@@ -577,7 +607,7 @@ body {
     }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 750px) {
     .profileStats {
         bottom: -25px; /* Posição consistente na parte inferior */
         right: 205px; /* Alinhado à direita em vez de usar valor fixo */
@@ -598,7 +628,7 @@ body {
 @media (max-width: 480px) {
     .profileStats {
         flex-direction: row; /* Mantém na horizontal para economizar espaço */
-        bottom: -20px; /* Posição consistente na parte inferior */
+        bottom: -100px; /* Posição consistente na parte inferior */
         right: 140px; /* Alinhado à direita em vez de usar valor fixo */
         padding: 4px 8px;
         /* gap: 0.3rem; */
