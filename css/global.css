@@ -15,7 +15,7 @@ body {
 	background-color: rgb(22, 22, 22);
 	color: white;
 	overflow: hidden auto;
-	/* filter: contrast(1); */
+    /* filter: contrast(0.8); */
     cursor: url(/img/cross_r.cur);
 }
 
@@ -91,6 +91,7 @@ body {
     will-change: transform;
     transform: translateZ(0);
 	pointer-events: none;
+	filter: contrast(1.4);
 }
 
 /* Animação básica para elementos surgindo */
