@@ -30,10 +30,10 @@ body {
     max-width: 650px;
     text-align: center;
     border: 1px solid rgb(175, 175, 175);
-    will-change: transform, height; /* Adicionado height para otimização */
     margin: 0 auto; /* Centraliza o container na tela */
-    transition: height 0.5s ease, min-height 0.5s ease; /* Transição suave */
-    overflow: hidden; /* Evita que o conteúdo transborde durante a animação */
+    will-change: transform, height;
+    transition: height 0.5s ease, min-height 0.5s ease;
+    overflow: hidden;
 }
 
 /* Ajustes para telas menores (tablets) */
