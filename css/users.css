@@ -55,6 +55,7 @@ body {
         max-width: 95%; /* Aumenta a largura máxima para ocupar mais espaço */
         border-radius: 10px; /* Reduz o border-radius para telas pequenas */
         /* padding-bottom: 100px; */
+        margin-bottom: 80px;
     }
 }
 
