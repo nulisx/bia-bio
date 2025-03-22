@@ -599,7 +599,7 @@ body {
     .profileStats {
         flex-direction: row; /* Mantém na horizontal para economizar espaço */
         bottom: -20px; /* Posição consistente na parte inferior */
-        right: 140px; /* Alinhado à direita em vez de usar valor fixo */
+        right: 135px; /* Alinhado à direita em vez de usar valor fixo */
         padding: 4px 8px;
         gap: 0.3rem;
         font-size: 12px;
