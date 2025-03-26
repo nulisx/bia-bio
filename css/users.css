@@ -6,7 +6,7 @@ body {
 }
 
 
-/* .background {
+.background {
     position: absolute;
     top: 0;
     left: 0;
@@ -14,7 +14,8 @@ body {
     height: 100vh;
     background-size: cover;
     object-fit: cover;
-} */
+    opacity: 0.7;
+}
 
 /* Estilos base para o container */
 .container {
@@ -29,7 +30,7 @@ body {
     width: 100%;
     max-width: 650px;
     text-align: center;
-    border: 1px solid rgb(175, 175, 175);
+    border: 4px solid rgba(175, 175, 175, 0.014);
     margin: 0 auto; /* Centraliza o container na tela */
     will-change: transform, height;
     transition: height 0.5s ease, min-height 0.5s ease;
@@ -100,6 +101,7 @@ body {
 .container .profileLayout .profileUsername {
     font-weight: 600;
     font-size: 36.5px;
+    font-size: 45px;
     width: fit-content;
     pointer-events: none;
     background-image: url(http://i752.photobucket.com/albums/xx164/optiikzz/rc599e.gif);
@@ -180,6 +182,9 @@ body {
 }
 .container .profileLayout .profileBadges .profileBadge.imagehost:hover::before {
     content: 'Image Host';
+}
+.container .profileLayout .profileBadges .profileBadge.sweet:hover::before {
+    content: 'Candy';
 }
 
 .container .profileLayout .profileBio {
@@ -429,7 +434,7 @@ body {
     gap: 1rem;
     margin-top: 2rem;
     filter: drop-shadow(0 0 0.9px #ffffff) !important;
-    cursor: crosshair;
+    cursor: url('/img/extralsmall.png') !important;
     transition: all 0.3s ease; /* Adiciona uma transição suave */
 }
 
@@ -479,7 +484,7 @@ body {
     display: flex;
     align-items: center;
     position: relative;
-    cursor: crosshair;
+    cursor: url('/img/extralsmall.png') !important;
 }
 
 .container .linkedAccounts .linkedAccountsRedirect.copied::before {
@@ -513,16 +518,6 @@ body {
     text-decoration: none;
     color: white;
 }
-
-/* .container .profileViews {
-    display: flex;
-    align-items: center;
-    gap: .25rem;
-    padding: 5px 10px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-} */
 
 /* Estilos base para o tooltip dos profileViews */
 .container .profileViews::before {
@@ -560,10 +555,14 @@ body {
     gap: 0.5rem;
     padding: 6px 12px;
     border-radius: 8px;
-    color: rgba(255, 255, 255, 0.384); /* Texto mais visível */
-    font-size: 14px;
+    color: rgba(255, 255, 255, 0.178); /* Texto mais visível */
     transition: all 0.3s ease; /* Transição suave para mudanças de estado */
     z-index: 5; /* Garantir que esteja acima de outros elementos */
+    filter: blur(10px);
+}
+
+.profileStats:hover {
+    filter: blur(0px);
 }
 
 /* Profile views e location estilizados para serem mais robustos */
@@ -695,9 +694,10 @@ body {
 
 .separator {
     height: 16px;
-    width: 1px;
-    background-color: rgba(255, 255, 255, 0.5);
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.041);
     margin: 0 2px;
+    border-radius: 25px;
 }
 
 /* Estilo para os ícones SVG dentro dos elementos */
@@ -715,58 +715,92 @@ body {
     to { width: 100%; }
 }
 
-.sticky-player {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
+.music-container {
+    font-family: 'Chillax', sans-serif !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(175, 175, 175, 0.5);
-    overflow: hidden;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    margin-left: auto;
-    margin-right: 20px;
-}
-
-.sticky-player .control-btn {
-    background-color: #ffffff00;
-    color: #ffffff;
-    border: none;
-}
-
-.sticky-player.expanded {
-    width: 300px;
-    height: auto;
     border-radius: 15px;
-}
-
-.player-content {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    padding: 15px;
-    pointer-events: none;
-}
-
-.sticky-player.expanded .player-content {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.progress-container {
+    min-height: 5rem; /* Altura inicial */
+    padding: 35px 15px;
     width: 100%;
-    height: 5px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
+    max-width: 650px;
+    max-height: 100px;
+    text-align: center;
+    border: 4px solid rgba(175, 175, 175, 0.014);
+    margin: 0 auto; /* Centraliza o container na tela */
+    will-change: transform, height;
+    transition: height 0.5s ease, min-height 0.5s ease;
     overflow: hidden;
 }
 
-.progress-bar {
+.music-player {
+    width: 500px;
+    border-radius: 10px;
+    font-family: 'Chillax', sans-serif !important;
+    font-size: large;
+}
+
+.music-player .player-controls {
+    margin-bottom: 0px;
+    font-size: 30px;
+}
+
+.music-player .player-timeline {
+    margin-top: -12px;
+}
+
+.player-timeline {
+    display: flex;
+    align-items: center;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline {
+    flex-grow: 1;
+    height: 4px;
+    background-color: #ffffff36;
+    border-radius: 2px;
+    position: relative;
+}
+
+.timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
     height: 100%;
-    width: 0%;
-    background-color: #1db954; /* Cor verde do Spotify, por exemplo */
-    transition: width 0.1s ease;
+    width: 20%;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+.time-label {
+    color: #ffffff;
+    font-size: 12px;
+    width: 40px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.control-btn:hover {
+    opacity: 1;
+}
+
+.play-pause {
+    font-size: 40px;
 }

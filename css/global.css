@@ -15,7 +15,6 @@ body {
 	color: white;
 	overflow: hidden auto;
     /* filter: contrast(0.8); */
-    cursor: url(/img/cross_r.cur);
 }
 
 ::-moz-selection { /* Code for Firefox */
@@ -85,12 +84,13 @@ body {
 }
 
 #background-layer-1 {
-    background-image: url(https://images3.alphacoders.com/986/thumb-1920-986696.jpg);
+    background-image: url(/img/fofinhas.jpg);
     background-size: cover;
     will-change: transform;
     transform: translateZ(0);
 	pointer-events: none;
 	filter: contrast(1.4);
+	opacity: 0.6;
 }
 
 /* Animação básica para elementos surgindo */

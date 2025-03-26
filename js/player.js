@@ -1,47 +1,53 @@
-const stickyPlayer = document.querySelector('.sticky-player');
+const audio = document.getElementById('audioPlayer');
+const playPauseBtn = document.querySelector('.play-pause');
+const pauseIcon = document.querySelector('.pause-icon');
+const timeline = document.querySelector('.timeline');
+const timelineProgress = document.querySelector('.timeline-progress');
+const currentTime = document.querySelector('.current-time');
+const totalTime = document.querySelector('.total-time');
 
-// Alternar expansão ao clicar no player
-stickyPlayer.addEventListener('click', () => {
-    stickyPlayer.classList.toggle('expanded');
+// Função para formatar tempo
+function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+// Carregar metadados do áudio
+audio.addEventListener('loadedmetadata', () => {
+    totalTime.textContent = formatTime(audio.duration);
 });
 
-// Fechar o player ao clicar fora dele
-document.addEventListener('click', (event) => {
-    if (!stickyPlayer.contains(event.target)) {
-        stickyPlayer.classList.remove('expanded');
-    }
-});
-
-const audio = document.getElementById('audio');
-const playPauseBtn = document.getElementById('play-pause-btn');
-const progressBar = document.querySelector('.progress-bar');
-
-// Função para alternar entre play e pause
-playPauseBtn.addEventListener('click', (event) => {
-    event.stopPropagation(); // Impede a propagação do evento para o container
+// Controle Play/Pause
+playPauseBtn.addEventListener('click', () => {
     if (audio.paused) {
         audio.play();
-        playPauseBtn.textContent = '⏸';
+        playPauseBtn.style.display = 'none';
+        pauseIcon.style.display = 'block';
     } else {
         audio.pause();
-        playPauseBtn.textContent = '▶';
+        playPauseBtn.style.display = 'block';
+        pauseIcon.style.display = 'none';
     }
 });
 
-// Atualizar a barra de progresso conforme a música toca
+// Atualizar progresso
 audio.addEventListener('timeupdate', () => {
     const progress = (audio.currentTime / audio.duration) * 100;
-    progressBar.style.width = `${progress}%`;
+    timelineProgress.style.width = `${progress}%`;
+    currentTime.textContent = formatTime(audio.currentTime);
 });
 
-// Função para retroceder a música
-document.getElementById('prev-btn').addEventListener('click', (event) => {
-    event.stopPropagation(); // Impede a propagação do evento para o container
-    audio.currentTime -= 10; // Retrocede 10 segundos
+// Controle por clique na timeline
+timeline.addEventListener('click', (e) => {
+    const timelineWidth = timeline.offsetWidth;
+    const clickX = e.offsetX;
+    const newTime = (clickX / timelineWidth) * audio.duration;
+    audio.currentTime = newTime;
 });
 
-// Função para avançar a música
-document.getElementById('next-btn').addEventListener('click', (event) => {
-    event.stopPropagation(); // Impede a propagação do evento para o container
-    audio.currentTime += 10; // Avança 10 segundos
+// Adicionar evento de término da música
+audio.addEventListener('ended', () => {
+    playPauseBtn.style.display = 'block';
+    pauseIcon.style.display = 'none';
 });
