@@ -1,5 +1,5 @@
 const audio = document.getElementById('audioPlayer');
-const playPauseBtn = document.querySelector('.play-pause');
+const playIcon = document.querySelector('.play-pause');
 const pauseIcon = document.querySelector('.pause-icon');
 const timeline = document.querySelector('.timeline');
 const timelineProgress = document.querySelector('.timeline-progress');
@@ -13,23 +13,27 @@ function formatTime(time) {
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-// Carregar metadados do áudio
+// Carregar metadados
 audio.addEventListener('loadedmetadata', () => {
     totalTime.textContent = formatTime(audio.duration);
 });
 
-// Controle Play/Pause
-playPauseBtn.addEventListener('click', () => {
+// Função única para controle
+function togglePlayPause() {
     if (audio.paused) {
         audio.play();
-        playPauseBtn.style.display = 'none';
+        playIcon.style.display = 'none';
         pauseIcon.style.display = 'block';
     } else {
         audio.pause();
-        playPauseBtn.style.display = 'block';
+        playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
     }
-});
+}
+
+// Eventos em ambos os ícones
+playIcon.addEventListener('click', togglePlayPause);
+pauseIcon.addEventListener('click', togglePlayPause);
 
 // Atualizar progresso
 audio.addEventListener('timeupdate', () => {
@@ -38,16 +42,15 @@ audio.addEventListener('timeupdate', () => {
     currentTime.textContent = formatTime(audio.currentTime);
 });
 
-// Controle por clique na timeline
+// Clique na timeline
 timeline.addEventListener('click', (e) => {
-    const timelineWidth = timeline.offsetWidth;
-    const clickX = e.offsetX;
-    const newTime = (clickX / timelineWidth) * audio.duration;
-    audio.currentTime = newTime;
+    const rect = timeline.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = pos * audio.duration;
 });
 
-// Adicionar evento de término da música
+// Reset ao terminar
 audio.addEventListener('ended', () => {
-    playPauseBtn.style.display = 'block';
+    playIcon.style.display = 'block';
     pauseIcon.style.display = 'none';
 });
