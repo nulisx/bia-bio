@@ -736,11 +736,49 @@ body {
     overflow: hidden;
 }
 
+/* Ajustes para telas menores (tablets) */
+@media (max-width: 768px) {
+    .music-container {
+        min-height: 12rem; /* Reduz a altura mínima */
+        max-width: 90%; /* Aumenta a largura máxima para ocupar mais espaço */
+    }
+}
+
+/* Ajustes para telas muito pequenas (smartphones) */
+@media (max-width: 480px) {
+    .music-container {
+        min-height: 10rem; /* Reduz a altura mínima */
+        max-width: 80%; /* Aumenta a largura máxima para ocupar mais espaço */
+        border-radius: 10px; /* Reduz o border-radius para telas pequenas */
+        bottom: 60px;
+    }
+}
+
 .music-player {
     width: 500px;
     border-radius: 10px;
     font-family: 'Chillax', sans-serif !important;
     font-size: large;
+}
+
+/* Ajustes para telas menores (tablets) */
+@media (max-width: 768px) {
+    .music-player {
+        min-height: 12rem; /* Reduz a altura mínima */
+        max-width: 90%; /* Aumenta a largura máxima para ocupar mais espaço */
+        padding-top: 40px;
+    }
+}
+
+/* Ajustes para telas muito pequenas (smartphones) */
+@media (max-width: 480px) {
+    .music-player {
+        padding-top: 30px;
+        min-height: 10rem; /* Reduz a altura mínima */
+        max-width: 80%; /* Aumenta a largura máxima para ocupar mais espaço */
+        border-radius: 10px; /* Reduz o border-radius para telas pequenas */
+        bottom: 60px;
+    }
 }
 
 .music-player .player-controls {
