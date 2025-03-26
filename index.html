@@ -58,6 +58,21 @@
 a, button, .linkedAccountsRedirect svg, .popup-button {
     cursor: url('/img/extralsmall.png'), pointer !important;
 }
+
+        /* Force layout recalculation on page load */
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Media query debugging */
+        @media screen and (max-width: 768px) {
+            /* Ensure responsive elements are flexible */
+            * {
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+        }
   </style>
 <!-- <div id="background"></div>
 <div id="background-layer-1" class="background-layer"></div> -->
