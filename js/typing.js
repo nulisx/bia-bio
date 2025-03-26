@@ -8,7 +8,7 @@ function typeWriter(text, i) {
         i++;
         setTimeout(function() {
             typeWriter(text, i);
-        }, 100);
+        }, 300);
     } else {
         setTimeout(function() {
             eraseText(text);

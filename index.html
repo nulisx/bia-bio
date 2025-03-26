@@ -379,6 +379,109 @@ container.addEventListener('mouseenter', (e) => {
 });
 </script>
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    // Elementos a serem animados
+    const content = document.querySelector('.container');
+    const musicContainer = document.querySelector('.music-container');
+
+    // Array de elementos para animação
+    const animatedElements = [content, musicContainer];
+
+    // Configurações iniciais para cada elemento
+    animatedElements.forEach(element => {
+        element.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+        element.style.zIndex = '1';
+        element.style.position = 'relative';
+        element.style.willChange = 'transform';
+        element.style.backfaceVisibility = 'hidden';
+        element.style.transformStyle = 'preserve-3d';
+    });
+
+    // Variáveis globais para animação
+    let currentX = 0;
+    let currentY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let rafId = null;
+
+    // Função de animação com requestAnimationFrame
+    function animateTransform() {
+        // Interpolação suave entre posição atual e alvo (easing)
+        currentX += (targetX - currentX) * 0.1;
+        currentY += (targetY - currentY) * 0.1;
+        
+        // Aplicar transformação em todos os elementos
+        animatedElements.forEach(element => {
+            element.style.transform = `
+                perspective(1000px)
+                rotateX(${currentY}deg)
+                rotateY(${currentX}deg)
+            `;
+        });
+        
+        // Continuar a animação apenas se houver movimento significativo
+        if (Math.abs(targetX - currentX) > 0.01 || Math.abs(targetY - currentY) > 0.01) {
+            rafId = requestAnimationFrame(animateTransform);
+        } else {
+            rafId = null;
+        }
+    }
+
+    // Função para adicionar evento de movimento em um elemento
+    function addMouseMoveEvent(element) {
+        element.addEventListener('mousemove', (e) => {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const offsetX = (x - centerX) / centerX;
+            const offsetY = (y - centerY) / centerY;
+            const intensity = 10;
+            
+            // Atualizar os valores alvo
+            targetX = offsetX * intensity;
+            targetY = offsetY * intensity;
+            
+            // Iniciar animação se não estiver rodando
+            if (!rafId) {
+                rafId = requestAnimationFrame(animateTransform);
+            }
+            
+            // Prevenindo propagação do evento
+            e.stopPropagation();
+        });
+    }
+
+    // Adicionar eventos de movimento para cada elemento
+    animatedElements.forEach(addMouseMoveEvent);
+
+    // Função para adicionar evento de saída do mouse
+    function addMouseLeaveEvent(element) {
+        element.addEventListener('mouseleave', () => {
+            // Definir alvo como posição inicial
+            targetX = 0;
+            targetY = 0;
+            
+            // Iniciar animação de retorno se não estiver rodando
+            if (!rafId) {
+                rafId = requestAnimationFrame(animateTransform);
+            }
+        });
+    }
+
+    // Adicionar eventos de saída do mouse para cada elemento
+    animatedElements.forEach(addMouseLeaveEvent);
+
+    // Adicionar eventos de entrada do mouse para prevenir propagação
+    animatedElements.forEach(element => {
+        element.addEventListener('mouseenter', (e) => {
+            e.stopPropagation();
+        });
+    });
+});
+</script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const popup = document.getElementById('redirect-popup');
         const popupCancel = document.getElementById('popup-cancel');

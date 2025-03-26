@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const audio = document.querySelector('.audioPlayer');
     const playIcon = document.querySelector('.play-pause');
     const pauseIcon = document.querySelector('.pause-icon');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
     const timeline = document.querySelector('.timeline');
     const timelineProgress = document.querySelector('.timeline-progress');
     const currentTime = document.querySelector('.current-time');
@@ -36,6 +38,22 @@ document.addEventListener('DOMContentLoaded', () => {
             autoPlayWithDelay();
         }
     });
+
+    // Função para pular para frente ou para trás
+    function skipTime(direction) {
+        const skipAmount = 5; // 5 segundos
+        if (direction === 'forward') {
+            // Pula para frente, mas não passa do final da música
+            audio.currentTime = Math.min(audio.currentTime + skipAmount, audio.duration);
+        } else {
+            // Pula para trás, mas não vai antes do início da música
+            audio.currentTime = Math.max(audio.currentTime - skipAmount, 0);
+        }
+    }
+
+    // Adiciona eventos de pulo para prev e next
+    prevButton.addEventListener('click', () => skipTime('backward'));
+    nextButton.addEventListener('click', () => skipTime('forward'));
 
     // Carrega metadados
     audio.addEventListener('loadedmetadata', () => {
