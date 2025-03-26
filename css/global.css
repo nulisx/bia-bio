@@ -28,9 +28,12 @@ body {
     background: rgb(102, 102, 102);
   }
 
-  .content {
-	
-  }
+/* Responsividade para tablets */
+@media (max-height: 664px) {
+    .content {
+		height: 650px;
+    }
+}
 
 .btn {
 	display: flex;

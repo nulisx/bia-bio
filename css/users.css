@@ -82,6 +82,13 @@ body {
     filter: contrast(0.8);
 }
 
+/* Responsividade para tablets */
+@media (max-height: 664px) {
+    .container .avatar {
+		margin-top: 1px;
+    }
+}
+
 .container .profileLayout {
     align-items: center;
     display: flex;
