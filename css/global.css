@@ -136,14 +136,15 @@ body {
 .delay-30 { animation-delay: 3s; }
 
 .elemento-para-animar {
-	opacity: 0;
-	/* transform: translateY(20px); */
-	transition: opacity 0.5s ease, transform 0.5s ease;
-  }
+    opacity: 0;
+    /* transform: translateY(20px); */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    will-change: opacity, transform;
+}
   
   .elemento-para-animar.animar {
 	opacity: 1;
-	transform: translateY(0);
+	transform: translateY(20px);
   }
 
 /* Estilos para a lockscreen */
