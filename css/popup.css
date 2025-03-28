@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.63);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,9 +21,9 @@
 
 .popup-container {
     backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.7); /* Sem backdrop-filter */
+    background-color: rgba(0, 0, 0, 0.76); /* Sem backdrop-filter */
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 10px 8px 12px rgba(0, 0, 0, 0.404);
     width: 90%;
     max-width: 320px;
     padding: 16px;
@@ -31,7 +31,7 @@
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.144);
+    border: 4px solid rgba(0, 0, 0, 0.349);
 }
 
 body::after {
@@ -71,6 +71,7 @@ body::after {
     cursor: pointer;
     border: none;
     transition: background-color 0.2s ease;
+    font-family: 'Chillax', sans-serif !important;
 }
 
 .popup-button-cancel {

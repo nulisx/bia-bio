@@ -30,7 +30,7 @@ body {
     width: 100%;
     max-width: 650px;
     text-align: center;
-    border: 4px solid rgba(175, 175, 175, 0.014);
+    border: 4px solid rgba(175, 175, 175, 0.048);
     margin: 0 auto;
     will-change: transform, height;
     transition: 
@@ -756,7 +756,7 @@ body {
     max-width: 650px;
     max-height: 100px;
     text-align: center;
-    border: 4px solid rgba(175, 175, 175, 0.014);
+    border: 4px solid rgba(175, 175, 175, 0.048);
     margin: 0 auto; /* Centraliza o container na tela */
     will-change: transform, height;
     transition: height 0.5s ease, min-height 0.5s ease;
