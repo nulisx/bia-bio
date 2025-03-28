@@ -138,7 +138,7 @@ function criarLockscreen() {
         if (container) {
           container.style.visibility = 'visible';
           container.style.opacity = '1';
-          container.style.transition = 'opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000)';
+          container.style.transition = 'opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
         }
         
         // Executar animação dos elementos após desbloqueio
