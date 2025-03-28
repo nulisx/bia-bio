@@ -24,19 +24,19 @@ body {
     flex-direction: column;
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    height: auto;  /* Alterado de min-height para height: auto */
-    min-height: 15rem;  /* Mantém a altura inicial mínima */
+    height: auto;
+    min-height: 15rem;
     padding: 35px 15px;
     width: 100%;
     max-width: 650px;
     text-align: center;
     border: 4px solid rgba(175, 175, 175, 0.014);
     margin: 0 auto;
-    will-change: height, transform;
+    will-change: transform, height;
     transition: 
-        height 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99), 
-        min-height 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99);
-    overflow: visible;  /* Alterado de hidden para visible */
+        transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99), 
+        height 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99);
+    overflow: visible;
 }
 
 /* Ajustes para telas menores (tablets) */
@@ -58,6 +58,7 @@ body {
         border-radius: 10px; /* Reduz o border-radius para telas pequenas */
         /* padding-bottom: 100px; */
         margin-bottom: 80px;
+        border: 4px solid rgba(175, 175, 175, 0.034);
     }
 }
 
@@ -200,6 +201,9 @@ body {
 }
 .container .profileLayout .profileBadges .profileBadge.sweet:hover::before {
     content: 'Candy';
+}
+.container .profileLayout .profileBadges .profileBadge.patrick:hover::before {
+    content: 'St. Patrick';
 }
 
 .container .profileLayout .profileBio {
@@ -754,7 +758,7 @@ body {
 /* Ajustes para telas menores (tablets) */
 @media (max-width: 768px) {
     .music-container {
-        min-height: 12rem; /* Reduz a altura mínima */
+        min-height: 10rem; /* Reduz a altura mínima */
         max-width: 90%; /* Aumenta a largura máxima para ocupar mais espaço */
     }
 }
@@ -763,13 +767,15 @@ body {
 @media (max-width: 550px) {
     .music-container {
         min-height: 12rem; /* Reduz a altura mínima */
-        max-width: 80%; /* Aumenta a largura máxima para ocupar mais espaço */
+        height: 50px;
+        max-width: 75%; /* Aumenta a largura máxima para ocupar mais espaço */
     }
 }
 
 /* Ajustes para telas muito pequenas (smartphones) */
 @media (max-width: 480px) {
     .music-container {
+        border: 4px solid rgba(175, 175, 175, 0.034);
         min-height: 10rem; /* Reduz a altura mínima */
         max-width: 80%; /* Aumenta a largura máxima para ocupar mais espaço */
         border-radius: 10px; /* Reduz o border-radius para telas pequenas */
@@ -888,8 +894,14 @@ body {
     align-items: center;
     gap: 10px;
     position: fixed;
-    left: 0.1%;
+    left: 0.5%;
     top: 1%;
+    opacity: 0.9;
+}
+
+.volume-icon {
+    cursor: pointer;
+    z-index: 2;
 }
 
 .volume-slider {
@@ -897,16 +909,17 @@ body {
     height: 4px;
     background: rgba(255,255,255,0.2);
     outline: none;
-    opacity: 0.7;
+    opacity: 0;
     transition: opacity 0.2s;
     -webkit-appearance: none;
     border-radius: 2px;
+    position: absolute;
+    left: 100%;
+    margin-left: 10px;
 }
 
-@media (max-width: 480px) {
-    .volume-control {
-        display: none;
-    }
+.volume-control:hover .volume-slider {
+    opacity: 0.7;
 }
 
 .volume-slider:hover {
@@ -921,4 +934,10 @@ body {
     background: white;
     cursor: pointer;
     border-radius: 50%;
+}
+
+@media (max-width: 480px) {
+    .volume-control {
+        display: none;
+    }
 }

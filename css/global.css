@@ -112,10 +112,10 @@ body {
 	}
   }
   
-  /* Classe para aplicar a animação */
-  .animate-fade-in {
+
+  /* .animate-fade-in {
 	opacity: 0;
-  }
+  } */
   
 /* Classes de delay para aplicar individualmente */
 .delay-1 { animation-delay: 0.1s; }
