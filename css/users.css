@@ -83,7 +83,6 @@ body {
     outline: 3px solid rgba(255, 255, 255, 0.301);
     background-color: #ffffff;
     pointer-events: none;
-    filter: contrast(0.8);
 }
 
 /* Responsividade para tablets */
