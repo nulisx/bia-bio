@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const centerY = rect.height / 2;
                 const offsetX = (x - centerX) / centerX;
                 const offsetY = (y - centerY) / centerY;
-                const intensity = 8;
+                const intensity = 9;
                 
                 // Atualizar os valores alvo
                 targetX = offsetX * intensity;
@@ -169,6 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Não precisamos mais da animação CSS para moveUp,
                 // pois agora controlamos o movimento através da animação JS
             }
-        }, 2700);
+        }, 2480);
     }, { once: true });
 });

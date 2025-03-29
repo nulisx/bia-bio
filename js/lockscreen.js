@@ -161,19 +161,28 @@ function criarLockscreen() {
 function animarElementosSequencialmente() {
   const elementos = document.querySelectorAll('.elemento-para-animar');
   
-  elementos.forEach((elemento, index) => {
-    const delay = 260 * index;
-    const duration = 50;
-    
+  elementos.forEach((elemento) => {
+    // Verifica se há uma classe de delay (ex: .delay-10, .delay-20)
+    const delayClass = Array.from(elemento.classList).find(cls => cls.startsWith('delay-'));
+    let delay = 0;
+
+    if (delayClass) {
+      // Extrai o número da classe (ex: "delay-20" → 20 → 2000ms)
+      const delayValue = parseInt(delayClass.replace('delay-', ''), 10);
+      delay = delayValue * 100; // Converte para ms (ex: 20 → 200ms)
+    } else if (elemento.dataset.delay) {
+      // Se não houver classe, verifica o atributo data-delay (ex: data-delay="300")
+      delay = parseInt(elemento.dataset.delay, 10);
+    }
+
     setTimeout(() => {
       let startTime = null;
       
       function animateElement(timestamp) {
         if (!startTime) startTime = timestamp;
         const elapsed = timestamp - startTime;
-        const progress = Math.min(elapsed / duration, 1);
+        const progress = Math.min(elapsed / 50, 1); // Duração fixa de 50ms
         
-        // Função de easing para movimento mais natural
         const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
         const easedProgress = easeOutCubic(progress);
         
@@ -183,7 +192,6 @@ function animarElementosSequencialmente() {
         if (progress < 1) {
           requestAnimationFrame(animateElement);
         } else {
-          // Limpar willChange após a animação para liberar recursos
           setTimeout(() => {
             elemento.style.willChange = 'auto';
           }, 300);
