@@ -867,6 +867,7 @@ body {
     width: 20%;
     background-color: #fff;
     border-radius: 2px;
+    will-change: padding, display;
 }
 
 .time-label {

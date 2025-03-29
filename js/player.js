@@ -84,12 +84,35 @@ document.addEventListener('DOMContentLoaded', () => {
         currentTime.textContent = formatTime(audio.currentTime);
     });
 
-    // Clique na timeline
-    timeline.addEventListener('click', (e) => {
+    // Aumentar área clicável sem modificar a aparência
+    // Modifica a timeline existente para ter uma área clicável maior
+    timeline.style.cursor = 'pointer';
+    timeline.style.position = 'relative';
+    
+    // Cria um elemento invisível para expandir a área clicável
+    const clickableArea = document.createElement('div');
+    clickableArea.style.position = 'absolute';
+    clickableArea.style.top = '-10px';  // Estende 10px para cima
+    clickableArea.style.bottom = '-10px'; // Estende 10px para baixo
+    clickableArea.style.left = '0';
+    clickableArea.style.right = '0';
+    clickableArea.style.cursor = 'pointer';
+    
+    // Adiciona o elemento invisível à timeline
+    timeline.appendChild(clickableArea);
+
+    // Função para processar o clique em qualquer parte da área clicável
+    function handleTimelineClick(e) {
         const rect = timeline.getBoundingClientRect();
         const pos = (e.clientX - rect.left) / rect.width;
         audio.currentTime = pos * audio.duration;
-    });
+    }
+
+    // Adiciona evento de clique ao elemento invisível maior
+    clickableArea.addEventListener('click', handleTimelineClick);
+    
+    // Mantém o evento de clique na timeline original para compatibilidade
+    timeline.addEventListener('click', handleTimelineClick);
 
     // Resetar ao terminar
     audio.addEventListener('ended', () => {
