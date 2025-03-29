@@ -40,6 +40,16 @@ body {
     transform-style: preserve-3d;
 }
 
+/* Media query para monitores semi ultrawide (2560x1080) */
+@media screen and (min-width: 2560px) {
+    .container {
+        max-width: 900px;
+        min-height: 20rem;
+        padding: 50px 25px;
+        margin-top: 100px;
+    }
+}
+
 /* Ajustes para telas menores (tablets) */
 @media (max-width: 768px) {
     .container {
@@ -602,6 +612,15 @@ body {
 }
 
 /* Responsividade para tablets */
+@media screen and (min-width: 2560px) {
+    .profileStats {
+        bottom: -50px; /* Posição consistente na parte inferior */
+        right: 365px; /* Alinhado à direita em vez de usar valor fixo */
+        padding: 5px 10px;
+    }
+}
+
+/* Responsividade para tablets */
 @media (max-width: 992px) {
     .profileStats {
         bottom: -31px; /* Posição consistente na parte inferior */
@@ -763,6 +782,20 @@ body {
     overflow: hidden;
 }
 
+/* Ajustes para monitores ultrawide (1920px e acima) */
+@media screen and (min-width: 1920px) {
+    .music-container {
+        max-width: 900px; /* Aumenta a largura máxima para ultrawide */
+    }
+}
+
+/* Ajustes específicos para monitores 2560px ou maiores */
+@media screen and (min-width: 2560px) {
+    .music-container {
+        max-width: 1100px; /* Largura ainda maior para monitores realmente grandes */
+    }
+}
+
 /* Ajustes para telas menores (tablets) */
 @media (max-width: 768px) {
     .music-container {
@@ -805,6 +838,13 @@ body {
     border-radius: 10px;
     font-family: 'Chillax', sans-serif !important;
     font-size: large;
+}
+
+/* Ajustes para telas menores (tablets) */
+@media screen and (min-width: 2560px) {
+    .music-player {
+        max-width: 90%; /* Aumenta a largura máxima para ocupar mais espaço */
+    }
 }
 
 /* Ajustes para telas menores (tablets) */
