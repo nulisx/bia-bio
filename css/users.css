@@ -31,12 +31,13 @@ body {
     max-width: 650px;
     text-align: center;
     border: 4px solid rgba(175, 175, 175, 0.048);
-    margin: 0 auto;
-    will-change: transform, height;
+    margin: -10px; /* WITH MUSIC CONTAINER UP ANIMATION */
+    margin-top: 80px;
     transition: 
         transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99), 
         height 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99);
     overflow: visible;
+    transform-style: preserve-3d;
 }
 
 /* Ajustes para telas menores (tablets) */
@@ -786,7 +787,7 @@ body {
         min-height: 10rem; /* Reduz a altura mínima */
         max-width: 80%; /* Aumenta a largura máxima para ocupar mais espaço */
         border-radius: 10px; /* Reduz o border-radius para telas pequenas */
-        bottom: 60px;
+        bottom: 75px;
     }
 }
 
