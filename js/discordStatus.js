@@ -1,22 +1,19 @@
-// Este é um pseudocódigo simplificado
 function atualizarPerfilDiscord() {
-    // Fazer solicitação à API do Discord com o token de autorização
-    fetch('https://discord.com/api/v10/users/874517110678765618', {
-        headers: {
-            'Authorization': 'Bot SEU_TOKEN_AQUI'
-        }
-    })
+    // Fazer solicitação à API do seu bot hospedado no Replit
+    fetch('https://seu-replit-url.replit.app/status')
     .then(response => response.json())
     .then(data => {
-        // Atualizar a foto do perfil
-        document.querySelector('.avatarImage').src = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png?size=2048`;
+        // Atualizar a foto do perfil (se disponível)
+        if (data.avatarUrl) {
+            document.querySelector('.avatarImage').src = data.avatarUrl;
+        }
         
-        // Atualizar o status (se estiver disponível na resposta da API)
+        // Atualizar o status
         const statusImg = document.querySelector('.discordStatus');
-        if (data.status === 'online') statusImg.src = '/img/online.png';
-        else if (data.status === 'idle') statusImg.src = '/img/idle.png';
-        else if (data.status === 'dnd') statusImg.src = '/img/dnd.png';
-        else statusImg.src = '/img/offline.png';
+        statusImg.src = data.statusImage;
+    })
+    .catch(error => {
+        console.error('Erro ao buscar status:', error);
     });
 }
 
