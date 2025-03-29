@@ -918,7 +918,8 @@ body {
     background: rgba(255,255,255,0.2);
     outline: none;
     opacity: 0;
-    transition: opacity 0.2s;
+    /* Mudança aqui - transição mais lenta para esconder (desaparecer) */
+    transition: opacity 0.2s ease-in, opacity 0.7s ease-out;
     -webkit-appearance: none;
     border-radius: 2px;
     position: absolute;
@@ -928,6 +929,14 @@ body {
 
 .volume-control:hover .volume-slider {
     opacity: 0.7;
+    /* Transição rápida para aparecer */
+    transition: opacity 0.2s ease-in;
+}
+
+/* Adicionar este seletor para manter visível quando o cursor estiver sobre o slider */
+.volume-slider:hover {
+    opacity: 0.7;
+    transition: opacity 0s;
 }
 
 .volume-slider:hover {
