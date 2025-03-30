@@ -1,6 +1,7 @@
 function atualizarPerfilDiscord() {
     // Fazer solicitação à API do seu bot hospedado no Replit
-    fetch('https://replit.com/@LookingOut/userBallStatus')
+    // A URL atual está incorreta - você está apontando para a página do Replit, não para o endpoint /status
+    fetch('https://userBallStatus.lookingout.repl.co/status')
     .then(response => response.json())
     .then(data => {
         // Atualizar a foto do perfil (se disponível)
@@ -10,12 +11,26 @@ function atualizarPerfilDiscord() {
         
         // Atualizar o status
         const statusImg = document.querySelector('.discordStatus');
-        statusImg.src = data.statusImage;
+        if (statusImg) {
+            // Usar o caminho correto da imagem baseado no status
+            switch(data.status) {
+                case 'online': statusImg.src = '/img/online.png'; break;
+                case 'idle': statusImg.src = '/img/idle.png'; break;
+                case 'dnd': statusImg.src = '/img/dnd.png'; break;
+                default: statusImg.src = '/img/offline.png';
+            }
+            console.log('Status atualizado para:', data.status);
+        } else {
+            console.error('Elemento .discordStatus não encontrado no DOM');
+        }
     })
     .catch(error => {
         console.error('Erro ao buscar status:', error);
     });
 }
+
+// Chamar a função imediatamente ao carregar
+atualizarPerfilDiscord();
 
 // Chamar a função periodicamente para manter atualizado
 setInterval(atualizarPerfilDiscord, 60000); // A cada minuto
