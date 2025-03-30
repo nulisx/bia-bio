@@ -33,4 +33,4 @@ function atualizarPerfilDiscord() {
 atualizarPerfilDiscord();
 
 // Chamar a função periodicamente para manter atualizado
-setInterval(atualizarPerfilDiscord, 10000); // 10sec
+setInterval(atualizarPerfilDiscord, 5000); // 5sec
