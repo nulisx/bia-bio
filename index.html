@@ -470,6 +470,16 @@ container.addEventListener('mouseenter', (e) => {
         });
     });
 </script>
+<script>
+    // Atualizar status na página a cada 10 segundos
+    setInterval(() => {
+      fetch('/status')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('currentStatus').innerText = data.status;
+        });
+    }, 10000);
+  </script>
 
 </body>
 
