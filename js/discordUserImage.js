@@ -1,6 +1,6 @@
 function atualizarPerfilDiscord() {
-    // Substitua pelo URL correto do seu Replit
-    fetch('https://b508e4e9-bb95-4ace-a5af-a62760d7a8d7-00-pfeq9qyw7ur3.picard.replit.dev/status')
+    // URL atualizada para apontar para o seu serviço no Render
+    fetch('https://discorduserstatus.onrender.com/status')
     .then(response => response.json())
     .then(data => {
         // Atualizar a foto do perfil
@@ -33,6 +33,12 @@ function atualizarPerfilDiscord() {
     })
     .catch(error => {
         console.error('Erro ao buscar status:', error);
+        // Adicionar tratamento de erro mais visível
+        const debugElement = document.querySelector('.debug-info');
+        if (debugElement) {
+            debugElement.textContent = 'Erro de conexão: ' + error.message;
+            debugElement.style.color = 'red';
+        }
     });
 }
 
