@@ -1,12 +1,13 @@
 function atualizarPerfilDiscord() {
-    // Fazer solicitação à API do seu bot hospedado no Replit
-    // A URL atual está incorreta - você está apontando para a página do Replit, não para o endpoint /status
-    fetch('https://b508e4e9-bb95-4ace-a5af-a62760d7a8d7-00-pfeq9qyw7ur3.picard.replit.dev/status')
+    // URL atualizada para apontar para o seu serviço no Render
+    fetch('https://discorduserstatus.onrender.com/status')
     .then(response => response.json())
     .then(data => {
         // Atualizar a foto do perfil (se disponível)
-        if (data.avatarUrl) {
-            document.querySelector('.avatarImage').src = data.avatarUrl;
+        const avatarImg = document.querySelector('.avatarImage');
+        if (avatarImg && data.avatarUrl) {
+            avatarImg.src = data.avatarUrl;
+            console.log('Avatar atualizado:', data.avatarUrl);
         }
         
         // Atualizar o status
@@ -26,6 +27,12 @@ function atualizarPerfilDiscord() {
     })
     .catch(error => {
         console.error('Erro ao buscar status:', error);
+        // Adicionar tratamento de erro mais visível para debugging
+        const statusElement = document.querySelector('.status-debugging');
+        if (statusElement) {
+            statusElement.textContent = 'Erro ao conectar: ' + error.message;
+            statusElement.style.color = 'red';
+        }
     });
 }
 
