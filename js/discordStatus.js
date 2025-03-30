@@ -1,6 +1,6 @@
 function atualizarPerfilDiscord() {
     // Fazer solicitação à API do seu bot hospedado no Replit
-    fetch('https://userBallStatus.replit.app/status')
+    fetch('https://replit.com/@LookingOut/FoolhardyExtrovertedMap')
     .then(response => response.json())
     .then(data => {
         // Atualizar a foto do perfil (se disponível)
