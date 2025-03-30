@@ -1,7 +1,7 @@
 function atualizarPerfilDiscord() {
     // Fazer solicitação à API do seu bot hospedado no Replit
     // A URL atual está incorreta - você está apontando para a página do Replit, não para o endpoint /status
-    fetch('https://userBallStatus.lookingout.repl.co/status')
+    fetch('https://b508e4e9-bb95-4ace-a5af-a62760d7a8d7-00-pfeq9qyw7ur3.picard.replit.dev/status')
     .then(response => response.json())
     .then(data => {
         // Atualizar a foto do perfil (se disponível)
