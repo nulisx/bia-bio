@@ -24,8 +24,8 @@ body {
   }
   
   ::selection {
-    color: rgb(255, 255, 255);
-    background: rgb(102, 102, 102);
+    color: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
   }
 
 /* Responsividade para tablets */
