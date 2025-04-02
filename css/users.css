@@ -676,6 +676,15 @@ body {
     }
 }
 
+/* Ajuste para telas médias */
+@media (max-width: 531px) {
+    .profileStats {
+        bottom: -20px; /* Posição consistente na parte inferior */
+        right: 140px; /* Alinhado à direita em vez de usar valor fixo */
+        font-size: 13px;
+    }
+}
+
 /* Ajustes para celulares */
 @media (max-width: 480px) {
     .profileStats {
