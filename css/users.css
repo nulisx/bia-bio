@@ -103,13 +103,6 @@ body {
     }
 }
 
-/* Responsividade para pobres */
-@media (max-width: 1366px) {
-    .container .avatar {
-		margin-top: -20px !important;
-    }
-}
-
 .container .profileLayout {
     align-items: center;
     display: flex;
@@ -1013,3 +1006,4 @@ body {
         display: none;
     }
 }
+
