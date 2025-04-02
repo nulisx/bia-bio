@@ -103,6 +103,13 @@ body {
     }
 }
 
+/* Responsividade para pobres */
+@media (max-width: 1366px) {
+    .container .avatar {
+		margin-top: -20px !important;
+    }
+}
+
 .container .profileLayout {
     align-items: center;
     display: flex;
@@ -474,6 +481,13 @@ body {
     cursor: url('/img/extralsmall.png') !important;
     transition: all 0.3s ease; /* Adiciona uma transição suave */
 }
+
+/* Ajustes para telas */
+/* @media (max-width: 1366px) {
+    .container .linkedAccounts {
+        padding-bottom: 5px;
+    }
+} */
 
 /* Ajustes para telas muito pequenas (smartphones) */
 @media (max-width: 480px) {
