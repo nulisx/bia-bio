@@ -3,26 +3,31 @@ function atualizarPerfilDiscord() {
     fetch('https://discorduserstatus.onrender.com/status')
     .then(response => response.json())
     .then(data => {
-        // Atualizar a foto do perfil
+        // Atualizar a foto do perfil (se disponível)
         const avatarImg = document.querySelector('.avatarImage');
         if (avatarImg && data.avatarUrl) {
-            avatarImg.src = data.avatarUrl;
-            console.log('Avatar atualizado:', data.avatarUrl);
+            // Adicionar parâmetro de tempo para evitar cache
+            const avatarSrc = data.avatarUrl.includes('?') ? 
+                data.avatarUrl + '&t=' + Date.now() : 
+                data.avatarUrl + '?t=' + Date.now();
+            
+            avatarImg.src = avatarSrc;
+            console.log('Avatar atualizado:', avatarSrc);
         }
         
         // Atualizar o status
         const statusImg = document.querySelector('.discordStatus');
         if (statusImg) {
-            // Determinar qual imagem de status usar
-            let statusImgPath;
+            // Usar o caminho correto da imagem baseado no status
             switch(data.status) {
-                case 'online': statusImgPath = '/img/online.png'; break;
-                case 'idle': statusImgPath = '/img/idle.png'; break;
-                case 'dnd': statusImgPath = '/img/dnd.png'; break;
-                default: statusImgPath = '/img/offline.png';
+                case 'online': statusImg.src = '/img/online.png'; break;
+                case 'idle': statusImg.src = '/img/idle.png'; break;
+                case 'dnd': statusImg.src = '/img/dnd.png'; break;
+                default: statusImg.src = '/img/offline.png';
             }
-            statusImg.src = statusImgPath;
             console.log('Status atualizado para:', data.status);
+        } else {
+            console.error('Elemento .discordStatus não encontrado no DOM');
         }
         
         // Se você quiser mostrar o nome de usuário também
@@ -33,17 +38,35 @@ function atualizarPerfilDiscord() {
     })
     .catch(error => {
         console.error('Erro ao buscar status:', error);
-        // Adicionar tratamento de erro mais visível
-        const debugElement = document.querySelector('.debug-info');
-        if (debugElement) {
-            debugElement.textContent = 'Erro de conexão: ' + error.message;
-            debugElement.style.color = 'red';
+        // Adicionar tratamento de erro mais visível para debugging
+        const statusElement = document.querySelector('.status-debugging');
+        if (statusElement) {
+            statusElement.textContent = 'Erro ao conectar: ' + error.message;
+            statusElement.style.color = 'red';
         }
     });
 }
 
-// Chamar a função imediatamente ao carregar
-atualizarPerfilDiscord();
+// Forçar atualização completa quando o documento carrega
+document.addEventListener('DOMContentLoaded', function() {
+    // Limpar qualquer cache de imagem que possa existir
+    const avatarImg = document.querySelector('.avatarImage');
+    if (avatarImg) {
+        avatarImg.src = '';
+    }
+    
+    // Chamar a função para atualizar
+    atualizarPerfilDiscord();
+});
 
 // Chamar a função periodicamente para manter atualizado
 setInterval(atualizarPerfilDiscord, 5000); // 5sec
+
+// Adicionar evento de clique manual para forçar atualização
+const avatarImg = document.querySelector('.avatarImage');
+if (avatarImg) {
+    avatarImg.addEventListener('click', function() {
+        console.log('Atualizando avatar manualmente...');
+        atualizarPerfilDiscord();
+    });
+}
