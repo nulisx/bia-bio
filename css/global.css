@@ -28,13 +28,6 @@ body {
     background: rgb(255, 255, 255);
   }
 
-/* Responsividade para tablets */
-@media (max-height: 664px) {
-    .content {
-		height: 650px;
-    }
-}
-
 .btn {
 	display: flex;
 	align-items: center;
@@ -243,3 +236,62 @@ body {
 		transform: translateY(-60px);
 	}
 }
+
+/* Dispositivos extra pequenos (celulares, até 480px) */
+@media only screen and (max-width: 480px) {
+	.container {
+	  margin-top: 60px;
+	  padding: 25px 10px;
+	}
+	
+	.container .profileLayout .profileUsername {
+	  font-size: 30px;
+	  margin-top: -15px;
+	}
+  }
+  
+  /* Dispositivos pequenos (tablets, 481px até 768px) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+	.container {
+	  margin-top: 70px;
+	}
+	
+	.music-container {
+	  padding-top: 100px;
+	}
+  }
+  
+  /* Telas grandes (desktops, 1201px até 1920px) */
+@media only screen and (min-width: 1201px) {
+	.container, .music-container {
+	  max-width: 800px;
+	}
+  }
+  
+  /* Telas ultrawide (acima de 1921px) */
+  @media only screen and (min-width: 1921px) {
+	body {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+	
+	.container, .music-container {
+	  max-width: 900px;
+	}
+	
+	/* Evitar que o conteúdo fique muito esticado */
+	.background-layer {
+	  background-size: cover;
+	  background-position: center;
+	}
+  }
+  
+  /* Para monitores extremamente largos (proporção ultrawide) */
+  @media only screen and (min-aspect-ratio: 21/9) {
+	body {
+	  max-width: 1800px;
+	  margin: 0 auto;
+	}
+  }
+  
