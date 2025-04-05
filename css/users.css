@@ -965,7 +965,7 @@ body {
 }
 
 .volume-icon {
-    cursor: pointer;
+    /* cursor: pointer; */
     z-index: 2;
 }
 
@@ -1006,7 +1006,7 @@ body {
     width: 12px;
     height: 12px;
     background: white;
-    cursor: pointer;
+    cursor: url('/img/Precision Select.cur');
     border-radius: 50%;
 }
 
