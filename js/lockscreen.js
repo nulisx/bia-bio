@@ -15,68 +15,27 @@ function criarLockscreen() {
   lockContent.classList.add('lock-content');
   lockContent.style.willChange = 'transform, opacity';
   
-  // Buscar o src do avatar original
-  const avatarOriginal = document.querySelector('.avatar');
-  const avatarSrc = avatarOriginal ? avatarOriginal.src : 'https://i.pinimg.com/736x/dc/4b/33/dc4b33ab5e34cf76b63764034b623758.jpg';
-  
-  // Adicionar avatar na lockscreen com o mesmo src
-  const avatarClone = document.createElement('img');
-  avatarClone.src = avatarSrc;
-  avatarClone.classList.add('lock-avatar');
-  avatarClone.style.willChange = 'transform';
-  
-  // Pré-carregamento da imagem para evitar atrasos
-  const preloadImg = new Image();
-  preloadImg.src = avatarSrc;
-  
-  // Atualizar o clone se o original mudar
-  if (avatarOriginal) {
-      const observador = new MutationObserver((mutations) => {
-          mutations.forEach((mutation) => {
-              if (mutation.attributeName === 'src') {
-                  // Pré-carregar a nova imagem antes de aplicar
-                  const newPreload = new Image();
-                  newPreload.src = avatarOriginal.src;
-                  newPreload.onload = () => {
-                      avatarClone.src = avatarOriginal.src;
-                  };
-              }
-          });
-      });
-      
-      observador.observe(avatarOriginal, { attributes: true });
-  }
-  
   // Texto para clicar com transição suave
   const clickText = document.createElement('div');
   clickText.classList.add('click-text');
   clickText.innerHTML = '[ click to unlock ]';
   clickText.style.willChange = 'opacity, transform';
   
-  // Adicionar animação de pulso suave ao texto
-  let pulseAnimation;
-  function animatePulseText() {
-      let scale = 1;
-      let growing = false;
-      
-      pulseAnimation = requestAnimationFrame(function pulse() {
-          if (growing) {
-              scale += 0.001;
-              if (scale >= 1.05) growing = false;
-          } else {
-              scale -= 0.001;
-              if (scale <= 0.95) growing = true;
-          }
-          
-          clickText.style.transform = `scale(${scale})`;
-          pulseAnimation = requestAnimationFrame(pulse);
-      });
-  }
-  
-  animatePulseText();
+  // Adicionar animação de pulso suave ao texto usando CSS
+  const pulseStyle = document.createElement('style');
+  pulseStyle.textContent = `
+      @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+          100% { transform: scale(1); }
+      }
+      .click-text {
+          animation: pulse 1.5s infinite ease-in-out;
+      }
+  `;
+  document.head.appendChild(pulseStyle);
   
   // Montar estrutura
-  lockContent.appendChild(avatarClone);
   lockContent.appendChild(clickText);
   lockscreen.appendChild(lockContent);
   
@@ -86,20 +45,20 @@ function criarLockscreen() {
   // Esconder o conteúdo principal
   const container = document.getElementById('container');
   if (container) {
-    container.style.opacity = '0';
-    container.style.visibility = 'hidden';
-    container.style.transition = 'opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000), visibility 0s linear 0.8s';
-    container.style.willChange = 'opacity';
+      container.style.opacity = '0';
+      container.style.visibility = 'hidden';
+      container.style.transition = 'opacity 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000), visibility 0s linear 0.8s';
+      container.style.willChange = 'opacity';
   }
   
   // Garantir que os elementos para animar estejam inicialmente ocultos
   const elementosParaAnimar = document.querySelectorAll('.elemento-para-animar');
   elementosParaAnimar.forEach(elemento => {
-    elemento.style.opacity = '0';
-    elemento.style.transform = 'translateY(20px)';
-    elemento.style.willChange = 'opacity, transform';
-    // Garantir que não haja animação automática
-    elemento.classList.remove('animate-fade-in');
+      elemento.style.opacity = '0';
+      elemento.style.transform = 'translateY(20px)';
+      elemento.style.willChange = 'opacity, transform';
+      // Garantir que não haja animação automática
+      elemento.classList.remove('animate-fade-in');
   });
   
   // Evento de clique para desbloquear
@@ -107,99 +66,67 @@ function criarLockscreen() {
   let animacaoDesbloqueio = null;
   
   lockscreen.addEventListener('click', () => {
-    if (desbloqueado) return; // Se já foi desbloqueado, não faz nada
-    desbloqueado = true; // Marca como desbloqueado
-    
-    // Parar a animação de pulso
-    cancelAnimationFrame(pulseAnimation);
-
-    // Animar a saída da lockscreen com requestAnimationFrame
-    let progress = 0;
-    const duration = 500; // duração em ms
-    const startTime = performance.now();
-    
-    // Função para easing (cubic-bezier)
-    function easeOutQuart(t) {
-      return 1 - Math.pow(1 - t, 4);
-    }
-    
-    function animateUnlock(timestamp) {
-      const elapsed = timestamp - startTime;
-      progress = Math.min(elapsed / duration, 1);
-      const eased = easeOutQuart(progress);
+      if (desbloqueado) return; // Se já foi desbloqueado, não faz nada
+      desbloqueado = true; // Marca como desbloqueado
       
-      lockscreen.style.opacity = `${1 - eased}`;
-      lockscreen.style.transform = `scale(${1 + (eased * 0.1)})`;
+      // Parar a animação de pulso removendo a classe
+      clickText.style.animation = 'none';
       
-      if (progress < 1) {
-        animacaoDesbloqueio = requestAnimationFrame(animateUnlock);
-      } else {
-        // Mostrar o conteúdo principal com fade
-        if (container) {
-          container.style.visibility = 'visible';
-          container.style.opacity = '1';
-          container.style.transition = 'opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
-        }
-        
-        // Executar animação dos elementos após desbloqueio
-        setTimeout(() => {
-          animarElementosSequencialmente();
-        }, 200);
-        
-        // Remover lockscreen após completar a animação
-        setTimeout(() => {
-          lockscreen.remove();
-        }, 800);
-      }
-    }
-    
-    animacaoDesbloqueio = requestAnimationFrame(animateUnlock);
+      // Animar a saída da lockscreen com CSS Transitions para melhor performance
+      lockscreen.style.transition = 'opacity 500ms cubic-bezier(0.165, 0.84, 0.44, 1), transform 500ms cubic-bezier(0.165, 0.84, 0.44, 1)';
+      lockscreen.style.opacity = '0';
+      lockscreen.style.transform = 'scale(1.1) translateZ(0)';
+      
+      // Mostrar o conteúdo principal com fade após a transição
+      setTimeout(() => {
+          if (container) {
+              container.style.visibility = 'visible';
+              container.style.opacity = '1';
+              container.style.transition = 'opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+          }
+          
+          // Executar animação dos elementos após desbloqueio
+          setTimeout(() => {
+              animarElementosSequencialmente();
+          }, 200);
+          
+          // Remover lockscreen após completar a animação
+          setTimeout(() => {
+              lockscreen.remove();
+          }, 800);
+      }, 500);
   });
 }
 
-// Animar elementos com classe "elemento-para-animar" usando requestAnimationFrame
+// Animar elementos com classe "elemento-para-animar" usando CSS Transitions
 function animarElementosSequencialmente() {
   const elementos = document.querySelectorAll('.elemento-para-animar');
   
   elementos.forEach((elemento) => {
-    // Verifica se há uma classe de delay (ex: .delay-10, .delay-20)
-    const delayClass = Array.from(elemento.classList).find(cls => cls.startsWith('delay-'));
-    let delay = 0;
-
-    if (delayClass) {
-      // Extrai o número da classe (ex: "delay-20" → 20 → 2000ms)
-      const delayValue = parseInt(delayClass.replace('delay-', ''), 10);
-      delay = delayValue * 100; // Converte para ms (ex: 20 → 200ms)
-    } else if (elemento.dataset.delay) {
-      // Se não houver classe, verifica o atributo data-delay (ex: data-delay="300")
-      delay = parseInt(elemento.dataset.delay, 10);
-    }
-
-    setTimeout(() => {
-      let startTime = null;
+      // Verifica se há uma classe de delay (ex: .delay-10, .delay-20)
+      const delayClass = Array.from(elemento.classList).find(cls => cls.startsWith('delay-'));
+      let delay = 0;
       
-      function animateElement(timestamp) {
-        if (!startTime) startTime = timestamp;
-        const elapsed = timestamp - startTime;
-        const progress = Math.min(elapsed / 50, 1); // Duração fixa de 50ms
-        
-        const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
-        const easedProgress = easeOutCubic(progress);
-        
-        elemento.style.opacity = easedProgress.toString();
-        elemento.style.transform = `translateY(${20 * (1 - easedProgress)}px)`;
-        
-        if (progress < 1) {
-          requestAnimationFrame(animateElement);
-        } else {
-          setTimeout(() => {
-            elemento.style.willChange = 'auto';
-          }, 300);
-        }
+      if (delayClass) {
+          // Extrai o número da classe (ex: "delay-20" → 20 → 2000ms)
+          const delayValue = parseInt(delayClass.replace('delay-', ''), 10);
+          delay = delayValue * 100; // Converte para ms (ex: 20 → 200ms)
+      } else if (elemento.dataset.delay) {
+          // Se não houver classe, verifica o atributo data-delay (ex: data-delay="300")
+          delay = parseInt(elemento.dataset.delay, 10);
       }
       
-      requestAnimationFrame(animateElement);
-    }, delay);
+      setTimeout(() => {
+          // Aplicar transição CSS em vez de animação frame por frame
+          elemento.style.transition = 'opacity 500ms cubic-bezier(0.4, 0, 0.2, 1), transform 500ms cubic-bezier(0.4, 0, 0.2, 1)';
+          elemento.style.opacity = '1';
+          elemento.style.transform = 'translateY(0)';
+          
+          // Remover willChange após a transição para liberar recursos
+          setTimeout(() => {
+              elemento.style.willChange = 'auto';
+          }, 500);
+      }, delay);
   });
 }
 
@@ -210,21 +137,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // Pré-processamento para preparar animações futuras
   const elementosParaAnimar = document.querySelectorAll('.elemento-para-animar');
   if (elementosParaAnimar.length > 0) {
-    // Informar ao navegador que esses elementos serão animados em breve
-    elementosParaAnimar.forEach(elemento => {
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              // Preparar elemento quando estiver próximo do viewport
-              entry.target.style.willChange = 'opacity, transform';
-              observer.unobserve(entry.target);
-            }
-          });
-        });
-        
-        observer.observe(elemento);
-      }
-    });
+      // Informar ao navegador que esses elementos serão animados em breve
+      elementosParaAnimar.forEach(elemento => {
+          if ('IntersectionObserver' in window) {
+              const observer = new IntersectionObserver((entries) => {
+                  entries.forEach(entry => {
+                      if (entry.isIntersecting) {
+                          // Preparar elemento quando estiver próximo do viewport
+                          entry.target.style.willChange = 'opacity, transform';
+                          observer.unobserve(entry.target);
+                      }
+                  });
+              });
+              observer.observe(elemento);
+          }
+      });
   }
 });
