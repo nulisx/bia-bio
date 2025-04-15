@@ -22,7 +22,7 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(5px);
     border-radius: 15px;
     height: auto;
     min-height: 15rem;
@@ -496,6 +496,7 @@ body {
     filter: drop-shadow(0 0 0.9px #ffffff) !important;
     cursor: url('/img/extralsmall.png') !important;
     transition: all 0.3s ease; /* Adiciona uma transição suave */
+    font-size: 1.09em;
 }
 
 /* Ajustes para telas */
