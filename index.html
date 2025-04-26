@@ -92,10 +92,10 @@ a, button, .linkedAccountsRedirect svg, .popup-button {
 
 <body profile="" style="font-family: Satoshi, sans-serif; cursor: url('/img/extralsmall.png'), auto; background-color: #222222;">
     <div class="video-container">
-        <div class="placeholder" style="background-image: url('/img/placeholdersapo.png');"></div>
+        <div class="placeholder" style="background-image: url('/img/florestaplace.png');"></div>
         <video class="background" autoplay muted loop preload="auto" disablePictureInPicture>
-            <source src="/img/Cozy Winter_long_loop.mp4" type="video/mp4">
-            <source src="/img/Cozy-Winter_long_loop (1).webm" type="video/webm">
+            <source src="/img/SAKURA - 雨桜 2 [4K]-00.50.05.469-00.51.34.693-00.00.00.000-00.01.26.632.mp4" type="video/mp4">
+            <source src="/img/SAKURA-雨桜-2-_4K_-00.50.05.469-00.51.34.693-00.00.00.000-00.01.26.632+(1).webm" type="video/webm">
         </video>
     </div>
     
@@ -110,7 +110,7 @@ a, button, .linkedAccountsRedirect svg, .popup-button {
     <div class="content" style="position: fixed; width: 100%; align-items: center; max-width: var(--containerWidth); display: flex; justify-content: center; flex-direction: column; gap: 15px; will-change: transform; transition: 700ms cubic-bezier(0.03, 0.98, 0.52, 0.99); transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
         <div class="container"  style="will-change: transform; transition: 0ms cubic-bezier(0.03, 0.98, 0.52, 0.99); transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);">
             <div class="elemento-para-animar delay-7">
-            <img style="opacity: 0.9;" class="avatar" src="https://i.pinimg.com/736x/b4/e5/03/b4e5035f2b2a1d98e6d015e35125e9cb.jpg">
+            <img style="opacity: 0.9;" class="avatar" src="https://i.pinimg.com/736x/fc/0d/70/fc0d706da883d50a92901b6aa33539ff.jpg">
         </div>
 
         <div class="profileLayout">
@@ -338,7 +338,8 @@ a, button, .linkedAccountsRedirect svg, .popup-button {
 
             </div>
         </div>
-        <audio class="audioPlayer" src="/img/_Yume 2kki sleep mix~ (mp3cut.net).mp3"></audio>
+        <audio id="rainBackground" src="/img/chuvafundo.mp3" preload="auto"></audio>
+        <audio class="audioPlayer" src="/img/Tokyo Ghoul_re OST - Schmetterling (Piano Version) [vmRxUNBPuKc].mp3"></audio>
     </div>
 </div>
 
@@ -483,6 +484,62 @@ container.addEventListener('mouseenter', (e) => {
           document.getElementById('currentStatus').innerText = data.status;
         });
     }, 10000);
+  </script>
+  <script>
+    // Script isolado para o áudio de chuva em background
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleciona especificamente o áudio de chuva, não o player de música
+    const rainAudio = document.querySelector('audio[src="/img/chuvafundo.mp3"]');
+    
+    if (!rainAudio) {
+        console.error('Elemento de áudio da chuva não encontrado');
+        return;
+    }
+    
+    // Configurar o áudio de chuva
+    rainAudio.loop = true;
+    rainAudio.volume = 0.05; // Volume baixo para som ambiente
+    
+    // Variável para controlar se já tentamos iniciar o áudio
+    let audioStartAttempted = false;
+    
+    // Função para tentar iniciar o áudio da chuva
+    function tryPlayRainAudio() {
+        if (audioStartAttempted) return;
+        audioStartAttempted = true;
+        
+        const playPromise = rainAudio.play();
+        
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                console.log('Autoplay do áudio de chuva bloqueado. Aguardando interação:', error);
+                
+                // Criar uma função de evento única para iniciar o áudio
+                const startRainAudio = function() {
+                    rainAudio.play().catch(err => {
+                        console.log('Ainda não foi possível iniciar o áudio de chuva:', err);
+                    });
+                    
+                    // Remover os listeners após a primeira tentativa
+                    document.removeEventListener('click', startRainAudio);
+                    document.removeEventListener('touchstart', startRainAudio);
+                    document.removeEventListener('keydown', startRainAudio);
+                };
+                
+                // Adicionar eventos para diferentes tipos de interação
+                document.addEventListener('click', startRainAudio, { once: true });
+                document.addEventListener('touchstart', startRainAudio, { once: true });
+                document.addEventListener('keydown', startRainAudio, { once: true });
+            });
+        }
+    }
+    
+    // Tentar iniciar o áudio imediatamente
+    tryPlayRainAudio();
+    
+    // Backup: tentar novamente após 1 segundo
+    setTimeout(tryPlayRainAudio, 1000);
+});
   </script>
 </body>
 
