@@ -42,14 +42,14 @@ body {
 }
 
 /* Media query para monitores semi ultrawide (2560x1080) */
-@media screen and (min-width: 2560px) {
+/* @media screen and (min-width: 2560px) {
     .container {
         max-width: 900px;
         min-height: 20rem;
         padding: 50px 25px;
         margin-top: 100px;
     }
-}
+} */
 
 /* Ajustes para telas menores (tablets) */
 @media (max-width: 768px) {
@@ -871,15 +871,6 @@ body {
         max-width: 70%; /* Aumenta a largura máxima para ocupar mais espaço */
         border-radius: 10px; /* Reduz o border-radius para telas pequenas */
         bottom: 60px;
-    }
-}
-
-/* Ajustes para telas muito pequenas (smartphones) */
-@media (max-height: 772px) {
-    .music-container {
-        max-height: 70%; /* Aumenta a largura máxima para ocupar mais espaço */
-        border-radius: 10px; /* Reduz o border-radius para telas pequenas */
-        bottom: 90px;
     }
 }
 
