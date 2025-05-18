@@ -874,6 +874,15 @@ body {
     }
 }
 
+/* Ajustes para telas muito pequenas (smartphones) */
+@media (max-height: 772px) {
+    .music-container {
+        max-height: 70%; /* Aumenta a largura máxima para ocupar mais espaço */
+        border-radius: 10px; /* Reduz o border-radius para telas pequenas */
+        bottom: 90px;
+    }
+}
+
 .music-player {
     width: 500px;
     border-radius: 10px;
