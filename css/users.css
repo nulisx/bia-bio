@@ -387,7 +387,7 @@ body {
     position: relative;
 }
 
-.container .presenceWrapper .discordInfos .discordUserBadge::before {
+/* .container .presenceWrapper .discordInfos .discordUserBadge::before {
     content: attr(data-tooltip);
     background-color: black;
     color: white;
@@ -402,7 +402,7 @@ body {
     padding: 2px 16px;
     z-index: 1;
     transition: opacity 0.3s;
-}
+} */
 
 .container .presenceWrapper .discordInfos .discordUserBadge:hover::before {
     opacity: 0.8;
@@ -576,7 +576,7 @@ body {
     filter: none;
     box-shadow: none;
     white-space: nowrap;
-    transition: opacity .3s;
+    transition: opacity .2s;
 }
 
 .container .linkedAccounts .linkedAccountsRedirect:hover::before {
