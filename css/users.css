@@ -38,6 +38,7 @@ body {
         height 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99);
     overflow: visible;
     transform-style: preserve-3d;
+    /* box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px; */
 }
 
 /* Media query para monitores semi ultrawide (2560x1080) */
