@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const audioPlayer = document.querySelector('.audioPlayer');
     const volumeSlider = document.querySelector('.volume-slider');
     const volumeIcon = document.querySelector('.volume-icon');
-    let lastVolume = 0.5; // Volume inicial definido para 50%
+    let lastVolume = 0.64; // Volume inicial definido para 50%
 
     // Definir volume inicial
     audioPlayer.volume = lastVolume;
