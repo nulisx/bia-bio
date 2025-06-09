@@ -913,8 +913,14 @@ body {
     font-size: 30px;
 }
 
-.music-player .player-controls .prev:hover{
-    color: #fff;
+.player-controls .prev,
+.player-controls .next {
+    transition: opacity 0.4s ease;
+}
+
+.player-controls .prev:hover,
+.player-controls .next:hover {
+    opacity: 1.0 !important;
 }
 
 .music-player .player-timeline {
