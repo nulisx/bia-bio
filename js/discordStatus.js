@@ -3,7 +3,7 @@ function atualizarPerfilDiscord(userId) {
     const targetUserId = userId || '874517110678765618';
     
     // URL atualizada para apontar para o endpoint específico do usuário
-    fetch(`https://discorduserstatus.onrender.com/status/${targetUserId}`)
+    fetch(`https://discorduserstatus-2-0.onrender.com/status/${targetUserId}`)
     .then(response => response.json())
     .then(data => {
         // Atualizar a foto do perfil (se disponível)
