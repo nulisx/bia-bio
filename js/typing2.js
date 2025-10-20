@@ -1,70 +1,80 @@
-const hiddenDiv = document.getElementById('typingTexts');
-const textElement = document.getElementById('typingText');
+const hiddenDiv = document.getElementById("typingTexts");
+const textElement = document.getElementById("typingText");
 const cursorChar = "|";
 let currentTextIndex = 0;
 
-// extracts items safely
-const texts = [];
-hiddenDiv.childNodes.forEach(node => {
-    if (node.nodeType === 3) {
-        // splits the text nodes by <>
-        node.textContent.split('<>').forEach(t => {
-            const trimmed = t.trim();
-            if (trimmed) texts.push(trimmed);
-        });
-    } else if (node.nodeName === "A") {
-        texts.push(node.cloneNode(true)); // keeps the actual link element
-    }
+// gets/grabs the raw text and decode any &lt; &gt;
+let raw = hiddenDiv.innerHTML
+  .replace(/&lt;/g, "<")
+  .replace(/&gt;/g, ">");
+
+// splits the content by the real "<>" separator
+const parts = raw.split("<>").map(p => p.trim()).filter(p => p.length);
+
+// converts parts to either text or link DOM nodes
+const texts = parts.map(part => {
+  // trying/trys to detect a link element
+  const temp = document.createElement("div");
+  temp.innerHTML = part;
+  const link = temp.querySelector("a");
+  return link ? link : part;
 });
 
 function typeWriter(content, i = 0) {
-    if (typeof content !== "string") {
-        // if it's a link element, it shows instantly
-        textElement.innerHTML = "";
-        textElement.appendChild(content);
-        textElement.innerHTML += " " + cursorChar;
-        setTimeout(() => eraseText(content), 1200);
-        return;
-    }
+  if (typeof content !== "string") {
+    // if it’s a link — fades in smoothly
+    textElement.innerHTML = "";
+    const clone = content.cloneNode(true);
+    clone.style.opacity = 0;
+    clone.style.transition = "opacity 0.8s ease";
+    textElement.appendChild(clone);
+    textElement.innerHTML += " " + cursorChar;
 
-    if (i <= content.length) {
-        textElement.textContent = content.substring(0, i) + cursorChar;
-        setTimeout(() => typeWriter(content, i + 1), 90);
-    } else {
-        setTimeout(() => eraseText(content), 800);
-    }
+    requestAnimationFrame(() => {
+      clone.style.opacity = 1;
+    });
+
+    setTimeout(() => eraseText(content), 1600);
+    return;
+  }
+
+  // typing effects for normal text
+  if (i <= content.length) {
+    textElement.textContent = content.substring(0, i) + cursorChar;
+    setTimeout(() => typeWriter(content, i + 1), 80);
+  } else {
+    setTimeout(() => eraseText(content), 900);
+  }
 }
 
 function eraseText(content) {
-    if (typeof content !== "string") {
-        textElement.innerHTML = cursorChar;
-        next();
-        return;
-    }
+  if (typeof content !== "string") {
+    textElement.innerHTML = cursorChar;
+    next();
+    return;
+  }
 
-    if (content.length > 0) {
-        textElement.textContent = content.substring(0, content.length - 1) + cursorChar;
-        setTimeout(() => eraseText(content.substring(0, content.length - 1)), 35);
-    } else {
-        next();
-    }
+  if (content.length > 0) {
+    textElement.textContent = content.substring(0, content.length - 1) + cursorChar;
+    setTimeout(() => eraseText(content.substring(0, content.length - 1)), 35);
+  } else {
+    next();
+  }
 }
 
 function next() {
-    currentTextIndex = (currentTextIndex + 1) % texts.length;
-    setTimeout(() => {
-        const nextItem = texts[currentTextIndex];
-        if (typeof nextItem === "object") {
-            // recreated the DOM node so links stay clickable
-            typeWriter(nextItem.cloneNode(true));
-        } else {
-            typeWriter(nextItem, 0);
-        }
-    }, 400);
+  currentTextIndex = (currentTextIndex + 1) % texts.length;
+  setTimeout(() => {
+    const nextItem = texts[currentTextIndex];
+    typeWriter(
+      typeof nextItem === "object" ? nextItem.cloneNode(true) : nextItem,
+      0
+    );
+  }, 300);
 }
 
-// starts typing
+// starts the typing cycle
 if (texts.length > 0) {
-    const firstItem = texts[0];
-    typeWriter(typeof firstItem === "object" ? firstItem.cloneNode(true) : firstItem, 0);
+  const firstItem = texts[0];
+  typeWriter(typeof firstItem === "object" ? firstItem.cloneNode(true) : firstItem, 0);
 }
