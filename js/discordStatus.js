@@ -54,7 +54,7 @@ function determinarUsuarioPagina() {
     const currentPath = window.location.pathname;
     if (currentPath.includes('meuperfil') || currentPath.includes('perfil2')) {
         // Seu ID de usuário
-        return '682694935631233203';
+        return '1263839346818289817';
     }
     
     // Por padrão, retornar o ID da Bia
