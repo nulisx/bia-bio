@@ -9,7 +9,7 @@ function typeWriter(text, i) {
         i++;
         setTimeout(function() {
             typeWriter(text, i);
-        }, 185);
+        }, 92.5);
     } else {
         setTimeout(function() {
             eraseText(text);
