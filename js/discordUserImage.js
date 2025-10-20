@@ -2,28 +2,31 @@ function atualizarPerfilDiscord(userId) {
     // Se nenhum userId for especificado, usar o ID da Bia por padrão
     const targetUserId = userId || '1263839346818289817';
     
-    // Atualizar a foto do perfil (somente para o userId específico)
+    // Apenas funciona para o userId específico, sem precisar de site externo
+    if (targetUserId !== '1263839346818289817') return;
+
+    // Atualizar a foto do perfil (se disponível)
     const avatarImg = document.querySelector('.avatarImage');
-    if (avatarImg && targetUserId === '1263839346818289817') {
-        // Adicionar parâmetro de tempo para evitar cache
-        const avatarSrc = '/img/revoke-avatar.png?t=' + Date.now();
+    if (avatarImg) {
+        // Discord avatar URL padrão (webp, tamanho 128)
+        const avatarSrc = `https://cdn.discordapp.com/avatars/${targetUserId}/a_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX?size=128&t=${Date.now()}`;
         avatarImg.src = avatarSrc;
         console.log(`Avatar do usuário ${targetUserId} atualizado:`, avatarSrc);
     }
     
-    // Atualizar o status (somente para o userId específico)
+    // Atualizar o status
     const statusImg = document.querySelector('.discordStatus');
-    if (statusImg && targetUserId === '1263839346818289817') {
-        statusImg.src = '/img/online.png';
-        console.log(`Status do usuário ${targetUserId} atualizado para: online`);
-    } else if (!statusImg) {
+    if (statusImg) {
+        statusImg.src = '/img/dnd.png';
+        console.log(`Status do usuário ${targetUserId} atualizado para: dnd`);
+    } else {
         console.error('Elemento .discordStatus não encontrado no DOM');
     }
     
-    // Mostrar o nome de usuário também
+    // Se você quiser mostrar o nome de usuário também
     const usernameElement = document.querySelector('.username');
-    if (usernameElement && targetUserId === '1263839346818289817') {
-        usernameElement.textContent = 'Revoke';
+    if (usernameElement) {
+        usernameElement.textContent = 'Bia';
     }
 }
 
