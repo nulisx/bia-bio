@@ -206,21 +206,6 @@ a, button, .linkedAccountsRedirect svg, .popup-button {
             <script src="/js/lockscreen.js"></script>
         </div>
 
-<script>
-  const userId = "1263839346818289817";
-  const avatarHash = null;
-  let avatarUrl;
-
-  if (avatarHash) {
-    avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.png?size=2048`;
-  } else {
-    const defaultAvatarIndex = userId % 5;
-    avatarUrl = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png?size=2048`;
-  }
-
-  document.getElementById("avatarImage").src = avatarUrl;
-</script>
-
         <div class="elemento-para-animar delay-17">
         <div class="presenceWrapper">
             <div class="presenceContainer">
@@ -255,6 +240,21 @@ a, button, .linkedAccountsRedirect svg, .popup-button {
             </div>
         </div>
     </div>
+
+<script>
+  const userId = "874517110678765618";
+  const avatarHash = null;
+  let avatarUrl;
+
+  if (avatarHash) {
+    avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.png?size=2048`;
+  } else {
+    const defaultAvatarIndex = userId % 5;
+    avatarUrl = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png?size=2048`;
+  }
+
+  document.getElementById("avatarImage").src = avatarUrl;
+</script>
 
         <div class="elemento-para-animar delay-18"><div class="linkedAccounts">
             <a data-type="Discord" class="linkedAccountsRedirect" id="trigger-popup" target="_blank"
