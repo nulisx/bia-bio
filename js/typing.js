@@ -4,31 +4,31 @@ const cursorChar = "|"; // Cursor character added here
 let currentTextIndex = 0;
 
 function typeWriter(text, i) {
-    if (i < text.length) {
-        textElement.textContent = text.substring(0, i + 1) + cursorChar;
+    if (i <= text.length) {
+        if (/<[a-z][\s\S]*>/i.test(text)) {
+            textElement.innerHTML = text.substring(0, i) + cursorChar;
+        } else {
+            textElement.textContent = text.substring(0, i) + cursorChar;
+        }
         i++;
-        setTimeout(function() {
-            typeWriter(text, i);
-        }, 92.5);
+        setTimeout(() => typeWriter(text, i), 92.5); // Added the typewriter typing speed
     } else {
-        setTimeout(function() {
-            eraseText(text);
-        }, 1000); // Added a 2-second delay before erasing
+        setTimeout(() => eraseText(text), 1000); // Added a 2-second delay before erasing
     }
 }
 
 function eraseText(text) {
     let length = text.length;
     if (length > 0) {
-        textElement.textContent = text.substring(0, length - 1) + cursorChar;
-        setTimeout(function() {
-            eraseText(text.substring(0, length - 1));
-        }, 40);
+        if (/<[a-z][\s\S]*>/i.test(text)) {
+            textElement.innerHTML = text.substring(0, length - 1) + cursorChar;
+        } else {
+            textElement.textContent = text.substring(0, length - 1) + cursorChar;
+        }
+        setTimeout(() => eraseText(text.substring(0, length - 1)), 40);
     } else {
         currentTextIndex = (currentTextIndex + 1) % texts.length;
-        setTimeout(function() {
-            typeWriter(texts[currentTextIndex], 0);
-        }, 500);
+        setTimeout(() => typeWriter(texts[currentTextIndex], 0), 500);
     }
 }
 
