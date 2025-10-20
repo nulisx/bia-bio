@@ -238,21 +238,6 @@ a, button, .linkedAccountsRedirect svg, .popup-button {
         </div>
     </div>
 
-<script>
-  const userId = "1414719822046171146";
-  const avatarHash = null;
-  let avatarUrl;
-
-  if (avatarHash) {
-    avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.png?size=2048`;
-  } else {
-    const defaultAvatarIndex = userId % 5;
-    avatarUrl = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png?size=2048`;
-  }
-
-  document.getElementById("avatarImage").src = avatarUrl;
-</script>
-
         <div class="elemento-para-animar delay-18"><div class="linkedAccounts">
             <a data-type="Discord" class="linkedAccountsRedirect" id="trigger-popup" target="_blank"
                 href="https://discord.com/users/1414719822046171146">
