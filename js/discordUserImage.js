@@ -26,7 +26,7 @@ function atualizarPerfilDiscord(userId) {
     // Se você quiser mostrar o nome de usuário também
     const usernameElement = document.querySelector('.username');
     if (usernameElement) {
-        usernameElement.textContent = 'Bia';
+        usernameElement.textContent = 'Revoke';
     }
 }
 
