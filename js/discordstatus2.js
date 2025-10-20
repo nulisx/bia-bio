@@ -20,8 +20,8 @@ function atualizarPerfilDiscord(userId) {
             switch(data.status) {
                 case 'online': statusImg.src = '/img/online.png'; break;
                 case 'idle': statusImg.src = '/img/idle.png'; break;
-                case 'dnd': statusImg.src = '/img/dnd.png'; break;
-                default: statusImg.src = '/img/offline.png';
+                case 'offline': statusImg.src = '/img/offline.png'; break;
+                default: statusImg.src = '/img/dnd.png';
             }
             console.log(`Status do usuário ${targetUserId} atualizado para:`, data.status);
         } else {
