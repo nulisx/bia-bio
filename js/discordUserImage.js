@@ -1,6 +1,6 @@
 function atualizarPerfilDiscord(userId) {
     // Se nenhum userId for especificado, usar o ID da Bia por padrão
-    const targetUserId = userId || '';
+    const targetUserId = userId || '1263839346818289817';
     
     // URL atualizada para apontar para o endpoint específico do usuário
     fetch(`https://discorduserstatus-2-0.onrender.com/status/${targetUserId}`)
@@ -25,8 +25,8 @@ function atualizarPerfilDiscord(userId) {
             switch(data.status) {
                 case 'online': statusImg.src = '/img/online.png'; break;
                 case 'idle': statusImg.src = '/img/idle.png'; break;
-                case 'dnd': statusImg.src = '/img/dnd.png'; break;
-                default: statusImg.src = '/img/offline.png';
+                case 'offline': statusImg.src = '/img/offline.png'; break;
+                default: statusImg.src = '/img/dnd.png';
             }
             console.log(`Status do usuário ${targetUserId} atualizado para:`, data.status);
         } else {
@@ -59,11 +59,11 @@ function determinarUsuarioPagina() {
     const currentPath = window.location.pathname;
     if (currentPath.includes('meuperfil') || currentPath.includes('perfil2')) {
         // Seu ID de usuário
-        return '682694935631233203';
+        return '1263839346818289817';
     }
     
     // Por padrão, retornar o ID da Bia
-    return '';
+    return '1263839346818289817';
 }
 
 // Forçar atualização completa quando o documento carrega
