@@ -211,7 +211,7 @@ a, button, .linkedAccountsRedirect svg, .popup-button {
             <div class="presenceContainer">
                 <div class="discordInfos">
                     <div class="discordAvatar">
-                        <img class="avatarImage" src="https://images-ext-1.discordapp.net/external/g4fMyo9rfTLl-mA5Nx_9fImvqfi-tvgDf-bu6KTywBA/%3Fsize%3D2048/https/cdn.discordapp.com/avatars/874517110678765618/8da376bc1c2a0b4b316c590e326a9491.png?format=webp&quality=lossless"
+                        <img id="avatarImage" class="avatarImage"
                             alt="Discord Avatar">
                         <img class="discordStatus" src="/img/dnd.png" alt="idle">
                     </div>
@@ -237,6 +237,21 @@ a, button, .linkedAccountsRedirect svg, .popup-button {
             </div>
         </div>
     </div>
+
+<script>
+  const userId = "1414719822046171146";
+  const avatarHash = null;
+  let avatarUrl;
+
+  if (avatarHash) {
+    avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${avatarHash}.png?size=2048`;
+  } else {
+    const defaultAvatarIndex = userId % 5;
+    avatarUrl = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png?size=2048`;
+  }
+
+  document.getElementById("avatarImage").src = avatarUrl;
+</script>
 
         <div class="elemento-para-animar delay-18"><div class="linkedAccounts">
             <a data-type="Discord" class="linkedAccountsRedirect" id="trigger-popup" target="_blank"
