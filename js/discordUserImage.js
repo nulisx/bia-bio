@@ -2,52 +2,29 @@ function atualizarPerfilDiscord(userId) {
     // Se nenhum userId for especificado, usar o ID da Bia por padrão
     const targetUserId = userId || '1263839346818289817';
     
-    // URL atualizada para apontar para o endpoint específico do usuário
-    fetch(`https://discorduserstatus-2-0.onrender.com/status/${targetUserId}`)
-    .then(response => response.json())
-    .then(data => {
-        // Atualizar a foto do perfil (se disponível)
-        const avatarImg = document.querySelector('.avatarImage');
-        if (avatarImg && data.avatarUrl) {
-            // Adicionar parâmetro de tempo para evitar cache
-            const avatarSrc = data.avatarUrl.includes('?') ? 
-                data.avatarUrl + '&t=' + Date.now() : 
-                data.avatarUrl + '?t=' + Date.now();
-            
-            avatarImg.src = avatarSrc;
-            console.log(`Avatar do usuário ${targetUserId} atualizado:`, avatarSrc);
-        }
-        
-        // Atualizar o status
-        const statusImg = document.querySelector('.discordStatus');
-        if (statusImg) {
-            // Usar o caminho correto da imagem baseado no status
-            switch(data.status) {
-                case 'online': statusImg.src = '/img/online.png'; break;
-                case 'idle': statusImg.src = '/img/idle.png'; break;
-                case 'offline': statusImg.src = '/img/offline.png'; break;
-                default: statusImg.src = '/img/dnd.png';
-            }
-            console.log(`Status do usuário ${targetUserId} atualizado para:`, data.status);
-        } else {
-            console.error('Elemento .discordStatus não encontrado no DOM');
-        }
-        
-        // Se você quiser mostrar o nome de usuário também
-        const usernameElement = document.querySelector('.username');
-        if (usernameElement && data.username) {
-            usernameElement.textContent = data.username;
-        }
-    })
-    .catch(error => {
-        console.error('Erro ao buscar status:', error);
-        // Adicionar tratamento de erro mais visível para debugging
-        const statusElement = document.querySelector('.status-debugging');
-        if (statusElement) {
-            statusElement.textContent = 'Erro ao conectar: ' + error.message;
-            statusElement.style.color = 'red';
-        }
-    });
+    // Atualizar a foto do perfil (somente para o userId específico)
+    const avatarImg = document.querySelector('.avatarImage');
+    if (avatarImg && targetUserId === '1263839346818289817') {
+        // Adicionar parâmetro de tempo para evitar cache
+        const avatarSrc = '/img/revoke-avatar.png?t=' + Date.now();
+        avatarImg.src = avatarSrc;
+        console.log(`Avatar do usuário ${targetUserId} atualizado:`, avatarSrc);
+    }
+    
+    // Atualizar o status (somente para o userId específico)
+    const statusImg = document.querySelector('.discordStatus');
+    if (statusImg && targetUserId === '1263839346818289817') {
+        statusImg.src = '/img/online.png';
+        console.log(`Status do usuário ${targetUserId} atualizado para: online`);
+    } else if (!statusImg) {
+        console.error('Elemento .discordStatus não encontrado no DOM');
+    }
+    
+    // Mostrar o nome de usuário também
+    const usernameElement = document.querySelector('.username');
+    if (usernameElement && targetUserId === '1263839346818289817') {
+        usernameElement.textContent = 'Revoke';
+    }
 }
 
 // Determinar qual usuário monitorar com base na página
