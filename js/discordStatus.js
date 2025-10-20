@@ -58,7 +58,7 @@ function determinarUsuarioPagina() {
     }
     
     // Por padrão, retornar o ID da Bia
-    return '874517110678765618';
+    return '1263839346818289817';
 }
 
 // Chamar a função imediatamente ao carregar com o ID correto
