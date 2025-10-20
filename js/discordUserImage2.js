@@ -3,7 +3,7 @@ function atualizarPerfilDiscord(userId) {
     const targetUserId = userId || '1414719822046171146';
     
     // URL atualizada para apontar para o endpoint específico do usuário
-    fetch(`https://discorduserstatus-2-0.onrender.com/status/${targetUserId}`)
+    fetch(`https://api.wxrn.lol/discord/${targetUserId}`)
     .then(response => response.json())
     .then(data => {
         // Atualizar a foto do perfil (se disponível)
@@ -59,7 +59,7 @@ function determinarUsuarioPagina() {
     const currentPath = window.location.pathname;
     if (currentPath.includes('meuperfil') || currentPath.includes('perfil2')) {
         // Seu ID de usuário
-        return '682694935631233203';
+        return '1414719822046171146';
     }
     
     // Por padrão, retornar o ID da Bia
